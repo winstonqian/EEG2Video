@@ -239,7 +239,7 @@ for subname in sub_list:
         train_data = np.empty((0, 62, 5))
         train_label = np.empty((0))
         for i in range(7):
-            if(i == test_set_id):
+            if(i == test_set_id or i == val_set_id):
                 continue
             train_data = np.concatenate((train_data, All_train[i].reshape(400, 62, 5)))
             train_label = np.concatenate((train_label, All_label[i]))

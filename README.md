@@ -93,6 +93,18 @@ We present some failure samples, these failures are typically caused by the inab
       </tr>
   </table>
 
+## Reproduction Process
+
+1. Segment the original videos to 2-second video clips and downsample all 2-second videos to the targeted FPS, e.g., 3 FPS in our paper, resulting in 6 frames of each video.
+2. Deploy Tune-A-Video: https://github.com/showlab/Tune-A-Video. After you can use one Input Video to fine-tune Stable Diffusion, trying to use more than one Input Video to fine-tune, in our study, we use 80 (each class 2 videos) Input Videos to fine-tune Stable Diffusion. Also, you can download the fine-tuned weights on SEED-DV at our new paper MindCine's Github: https://github.com/KevinZhou6/MindCine. Remember to save the negative prompts' embeddings.
+3. Use Stable Diffusion's VAE encoder to get the visual latents of each video: it will be like shape: frames × channels × H × W.
+4. Use Stable Diffusion's Text encoder to get the text embeddings of each video's captions: it will be like shape: 77 × 768.
+5. Train a vanilla Transformer, the input is EEG signal (7×C×100), and the output is visual latents: frames × channels × H × W.
+6. Train a simple MLP, the input is EEG signal/features, mayebe (C×d), and the output is text embeddings: 77 × 768. You only select one caption for each class, and may adopt pretraining method on a fake dataset (replacing EEG signals by np.ones_like(EEG data) × [1, 2, ..., 40]) to train this MLP.
+7. Train a binary classifiers called dyanmic predictor (also an MLP), the input is EEG signal/features, mayebe (C×d), and the output is Fast/Slow, corresponding to the Fast/Slow task in the EEG-VP benchmark.
+8. Inference Stage: get one EEG signal, use vanilla Transformer and simple MLP to get the predicted visual latents and text embeddings. Use binary classifiers to get the Fast/Slow information, on which the DANA module's $\beta$ is depend. If you use DANA module, than add the same noise and diverse noise to the visual latents now to get noise_added visual latents. Than put text embeddings, visual latents or noise_added visual latents, and negative prompts' embeddings into fine-tuned Tune-A-Video model to generate videos.
+9. Calculate the metrics: prepare the 200 generated videos inferred from EEG signals of the test set and the 200 original videos of the test set. Than use 40_class_run_metrics.py to calculate the video's semantic-level and pixel-level metrics.
+
 ## BibTeX
 ```
 @inproceedings{liu2024eegvideo,

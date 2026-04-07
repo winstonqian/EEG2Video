@@ -24,12 +24,24 @@ batch_size = 256
 num_epochs = 100
 lr = 0.001   # learning rate
 C = 62       # the number of channels
-T = 5        # the time samples of EEG signals
+
+# ========================================================
+# TO REVERT TO PSD/DE TRAINING, UNCOMMENT THESE:
+# T = 5
+# network_name = "PSD_no_data_leak"
+# ========================================================
+# CURRENT SETTINGS (RAW EEG):
+T = 400      # the time samples of EEG signals (200Hz * 2s)
+network_name = "Raw_EEG" # Using the Spatial-Temporal model
+# ========================================================
+
 output_dir = './output_dir/'
-network_name = "GLMNet_mlp"
+os.makedirs(output_dir, exist_ok=True)
 saved_model_path = output_dir + network_name + '_40c.pth'
 
-run_device = "cuda"
+run_device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"Using device: {run_device}")
+
 
 ##########################################################################################
 
@@ -198,83 +210,130 @@ GT_label = np.array([[23, 22, 9, 6, 18,       14, 5, 36, 25, 19,      28, 35, 3,
              31, 26, 18, 24, 8,      3, 23, 19, 14, 13,      21, 4, 25, 11, 32,      17, 39, 29, 33, 27]
             ])
 GT_label = GT_label - 1
-All_label = np.empty((0, 400))
-for block_id in range(7):
-    All_label = np.concatenate((All_label, GT_label[block_id].repeat(10).reshape(1, 400)))
 
 def get_files_names_in_directory(directory):
     files_names = []
     for root, _, filenames in os.walk(directory):
         for filename in filenames:
-            files_names.append(filename)
+            if filename.endswith(".npy"):
+                files_names.append(filename)
     return files_names
 
-sub_list = get_files_names_in_directory("data/DE_1per1s/")
+# ========================================================
+# TO REVERT TO PSD/DE, UNCOMMENT ONE OF THESE:
+# sub_list = get_files_names_in_directory("data/DE_1per1s/")
+# sub_list = get_files_names_in_directory("data/PSD_1per1s/")
+# ========================================================
+# CURRENT SETTINGS (RAW EEG):
+sub_list = get_files_names_in_directory("data/Segmented_Rawf_200Hz_2s/")
+# ========================================================
 
 All_sub_top1 = []
 All_sub_top5 = []
 
 for subname in sub_list:
-    load_npy = np.load("data/DE_1per1s/" + subname)
+    # ========================================================
+    # TO REVERT TO PSD/DE, UNCOMMENT ONE OF THESE:
+    # load_npy = np.load("data/DE_1per1s/" + subname)
+    # load_npy = np.load("data/PSD_1per1s/" + subname)
+    # ========================================================
+    # CURRENT SETTINGS (RAW EEG):
+    load_npy = np.load("data/Segmented_Rawf_200Hz_2s/" + subname)
+    # ========================================================
 
     print(load_npy.shape)
 
     all_test_label = np.array([])
-    all_test_pred = np.array([])
+    if "mlp" in network_name.lower() or "psd" in network_name.lower() or "de" in network_name.lower():
+        All_train = rearrange(load_npy, "a b c d e f -> a (b c d) e f")
+    else:
+        All_train = rearrange(load_npy, "a b c e f -> a (b c) e f")
 
-    print(load_npy.shape)
-
-    print("shape = ", load_npy.shape)
-
-    All_train = rearrange(load_npy, 'a b c d e f -> a (b c d) e f')
     print(All_train.shape)
 
     Top_1 = []
     Top_K = []
+    all_test_label = np.array([])
+    all_test_pred = np.array([])
 
     for test_set_id in range(7):
         val_set_id = test_set_id - 1
         if(val_set_id < 0):
             val_set_id = 6
-        train_data = np.empty((0, 62, 5))
-        train_label = np.empty((0))
-        for i in range(7):
-            if(i == test_set_id or i == val_set_id):
-                continue
-            train_data = np.concatenate((train_data, All_train[i].reshape(400, 62, 5)))
-            train_label = np.concatenate((train_label, All_label[i]))
-        test_data = All_train[test_set_id]
-        test_label = All_label[test_set_id]
-        val_data = All_train[val_set_id]
-        val_label = All_label[val_set_id]
 
-        train_data = train_data.reshape(train_data.shape[0], 62*5)
-        test_data = test_data.reshape(test_data.shape[0], 62*5)
-        val_data = val_data.reshape(val_data.shape[0], 62*5)
+        if "mlp" in network_name.lower() or "psd" in network_name.lower() or "de" in network_name.lower():
+            All_label = np.empty((0, 400))
+            for block_id in range(7):
+                All_label = np.concatenate((All_label, GT_label[block_id].repeat(10).reshape(1, 400)))
+            
+            # --- START PSD/DE REVERT FOR TRAIN_DATA SHAPES ---
+            # train_data = np.empty((0, 62, 5))
+            # train_label = np.empty((0))
+            # for i in range(7):
+            #     if(i == test_set_id or i == val_set_id):
+            #         continue
+            #     train_data = np.concatenate((train_data, All_train[i].reshape(400, 62, 5)))
+            #     train_label = np.concatenate((train_label, All_label[i]))
+            # ----------------------------------------------------
+            
+            train_data = np.empty((0, C, T))
+            train_label = np.empty((0))
+            for i in range(7):
+                if(i == test_set_id or i == val_set_id):
+                    continue
+                train_data = np.concatenate((train_data, All_train[i].reshape(400, C, T)))
+                train_label = np.concatenate((train_label, All_label[i]))
+            test_data = All_train[test_set_id]
+            test_label = All_label[test_set_id]
+            val_data = All_train[val_set_id]
+            val_label = All_label[val_set_id]
+        else:
+            All_label = np.empty((0, 200))
+            for block_id in range(7):
+                All_label = np.concatenate((All_label, GT_label[block_id].repeat(5).reshape(1, 200)))
+            
+            train_data = np.empty((0, C, T))
+            train_label = np.empty((0))
+            for i in range(7):
+                if(i == test_set_id or i == val_set_id):
+                    continue
+                train_data = np.concatenate((train_data, All_train[i].reshape(200, C, T)))
+                train_label = np.concatenate((train_label, All_label[i]))
+            test_data = All_train[test_set_id]
+            test_label = All_label[test_set_id]
+            val_data = All_train[val_set_id]
+            val_label = All_label[val_set_id]
+
+        # --- START PSD/DE REVERT FOR RESHAPE MULTIPLES ---
+        # train_data = train_data.reshape(train_data.shape[0], 62*5)
+        # test_data = test_data.reshape(test_data.shape[0], 62*5)
+        # val_data = val_data.reshape(val_data.shape[0], 62*5)
+        # ----------------------------------------------------
+
+        train_data = train_data.reshape(train_data.shape[0], C*T)
+        test_data = test_data.reshape(test_data.shape[0], C*T)
+        val_data = val_data.reshape(val_data.shape[0], C*T)
 
         #对训练数据和测试数据归一化
         normalize = StandardScaler()
         normalize.fit(train_data)
         train_data = normalize.transform(train_data)  #分别进行归一化
-        normalize = StandardScaler()
-        normalize.fit(test_data)
+
+        # USE TRAINING STATISTICS: Never fit scalar on test or val data
         test_data = normalize.transform(test_data)
-        normalize = StandardScaler()
-        normalize.fit(val_data)
         val_data = normalize.transform(val_data)
             
-        modelnet = models.glfnet_mlp(out_dim=40, emb_dim=64, input_dim=310)
-        # backdoor_net = nn.Sequential(nn.Flatten(), nn.Linear(200, 256), nn.ReLU(),
-        #                              nn.Linear(256, 256), nn.ReLU(),
-        #                              nn.Linear(256, 256), nn.ReLU(),
-        #                              nn.Linear(256, 5))
+        if "mlp" in network_name.lower() or "psd" in network_name.lower() or "de" in network_name.lower():
+            modelnet = models.glfnet_mlp(out_dim=40, emb_dim=64, input_dim=C*T)
+            norm_train_data = train_data.reshape(train_data.shape[0], C, T)
+            norm_test_data = test_data.reshape(test_data.shape[0], C, T)
+            norm_val_data = val_data.reshape(val_data.shape[0], C, T)
+        else:
+            modelnet = models.glfnet(out_dim=40, emb_dim=64, C=C, T=T)
+            norm_train_data = train_data.reshape(train_data.shape[0], 1, C, T)
+            norm_test_data = test_data.reshape(test_data.shape[0], 1, C, T)
+            norm_val_data = val_data.reshape(val_data.shape[0], 1, C, T)
 
-        # norm_backdoor_train_data = my_normalize(backdoor_data).reshape(backdoor_data.shape[0], 1, C, T)
-        # norm_test_data = my_normalize(test_data).reshape(test_data.shape[0], 1, C, T)
-
-        norm_train_data = train_data.reshape(train_data.shape[0], C, T)
-        norm_test_data = test_data.reshape(test_data.shape[0], C, T)
-        norm_val_data = val_data.reshape(val_data.shape[0], C, T)
         train_iter = Get_Dataloader(norm_train_data, train_label, istrain=True, batch_size=batch_size)
         test_iter = Get_Dataloader(norm_test_data, test_label, istrain=False, batch_size=batch_size)
         val_iter = Get_Dataloader(norm_val_data, val_label, istrain=False, batch_size=batch_size)
@@ -285,7 +344,7 @@ for subname in sub_list:
         
         print("acc : =", accu)
 
-        loaded_model = torch.load(saved_model_path)
+        loaded_model = torch.load(saved_model_path, weights_only=False)
         loaded_model.to(run_device)
 
         block_top_1 = []
@@ -341,10 +400,10 @@ for subname in sub_list:
     save_results = np.concatenate((all_test_pred.reshape(1, all_test_label.shape[0]), all_test_label.reshape(1, all_test_label.shape[0])))
     print(save_results.shape)
 
-    np.save('./ClassificationResults/40c_top1/'+network_name+'_Predict_Label_' + subname + '.npy', save_results)
-
-    # break
-
+    clean_subname = subname.replace('.npy', '')
+    os.makedirs('./ClassificationResults/40c_top1/', exist_ok=True)
+    os.makedirs('./ClassificationResults/40c_top5/', exist_ok=True)
+    np.save('./ClassificationResults/40c_top1/'+network_name+'_Predict_Label_' + clean_subname + '.npy', save_results)
 print(All_sub_top1)
 print(All_sub_top5)
 

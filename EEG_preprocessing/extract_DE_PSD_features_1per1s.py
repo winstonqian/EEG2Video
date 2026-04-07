@@ -14,7 +14,8 @@ def get_files_names_in_directory(directory):
     files_names = []
     for root, _, filenames in os.walk(directory):
         for filename in filenames:
-            files_names.append(filename)
+            if filename.endswith(".npy"):
+                files_names.append(filename)
     return files_names
 
 sub_list = get_files_names_in_directory("data/Segmented_Rawf_200Hz_2s/")
@@ -48,7 +49,8 @@ for subname in sub_list:
         DE_data = np.concatenate((DE_data, de_block_data.reshape(1, 40, 5, 2, 62, 5)))
         PSD_data = np.concatenate((PSD_data, psd_block_data.reshape(1, 40, 5, 2, 62, 5)))
 
-    np.save("data/DE_1per1s/" + subname + ".npy", DE_data)
-    np.save("data/PSD_1per1s/" + subname + ".npy", PSD_data)
+    clean_subname = subname.replace('.npy', '')
+    np.save("data/DE_1per1s/" + clean_subname + ".npy", DE_data)
+    np.save("data/PSD_1per1s/" + clean_subname + ".npy", PSD_data)
 
     # break

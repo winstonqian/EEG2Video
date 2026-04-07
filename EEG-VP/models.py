@@ -114,7 +114,12 @@ class shallownet(nn.Module):
             nn.AvgPool2d((1, 51), (1, 5)),
             nn.Dropout(0.5),
         )
-        self.out = nn.Linear(1040*(T//200), out_dim)
+        # ========================================================
+        # TO REVERT TO ORIGINAL SHAPE FORMULA (Works for T=200):
+        # self.out = nn.Linear(1040*(T//200), out_dim)
+        # ========================================================
+        # CURRENT SETTINGS (Works for T=400):
+        self.out = nn.Linear(40 * (((T-24)-51)//5 + 1), out_dim)
     
     def forward(self, x):               #input:(batch,1,C,T)
         x = self.net(x)

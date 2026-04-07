@@ -12,13 +12,14 @@ def get_files_names_in_directory(directory):
     files_names = []
     for root, _, filenames in os.walk(directory):
         for filename in filenames:
-            files_names.append(filename)
+            if filename.endswith(".npy"):
+                files_names.append(filename)
     return files_names
 
-sub_list = get_files_names_in_directory("./data/Rawf_200Hz/")
+sub_list = get_files_names_in_directory("./data/EEG/")
 
 for subname in sub_list:
-    npydata = np.load('./data/Rawf_200Hz/' + subname)
+    npydata = np.load('./data/EEG/' + subname)
 
     save_data = np.empty((0, 40, 5, 62, 2*fre))
 

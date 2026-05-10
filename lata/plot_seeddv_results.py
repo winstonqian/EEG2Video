@@ -105,8 +105,9 @@ ax3.spines[["top", "right"]].set_visible(False)
 
 fig.suptitle(
     "LATA on SEED-DV: EEG–Video Latency Learning (Subject 1, 1400 training clips)",
-    fontsize=13, fontweight="bold", color="#011f4b", y=1.02
+    fontsize=13, fontweight="bold", color="#011f4b", y=1.0
 )
+plt.subplots_adjust(top=0.88)
 
 out = os.path.join(os.path.dirname(__file__), "lata_seeddv_results.png")
 plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")

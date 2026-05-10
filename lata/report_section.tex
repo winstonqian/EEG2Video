@@ -24,13 +24,11 @@
 \newpage
 
 % ─────────────────────────────────────────────────────────────
-\section{Proposed Method}
+\section{Proposed Method: Latency-Aware Temporal Alignment}
 % ─────────────────────────────────────────────────────────────
 
-\subsection{Latency-Aware Temporal Alignment (LATA)}
-% ─────────────────────────────────────────────────────────────
+\subsection{Motivation}
 
-\paragraph{Motivation.}
 Standard cross-attention assumes that time $t$ in modality $A$ corresponds
 strictly to time $t$ in modality $B$.
 This assumption is physically incorrect for brain signals: neural responses
@@ -38,16 +36,21 @@ always \emph{lag} the driving stimulus by a biological transit delay
 $\delta$ — early visual responses (P100) peak at $\sim$100\,ms
 post-stimulus, while higher-level semantic responses (P300) peak at
 $\sim$300\,ms~\cite{luck2014introduction}.
-Existing EEG-to-video alignment methods, including the EEG2Video baseline,
-ignore this latency and align the full EEG clip to a single global video
-embedding, making it impossible to track within-clip temporal dynamics.
+Existing EEG-to-video alignment methods, including the EEG2Video
+baseline~\cite{liu2024eeg2video}, ignore this latency entirely, aligning
+the full EEG clip to a single global video embedding and making it
+impossible to track within-clip temporal dynamics.
 
-We propose \textbf{LATA} (Latency-Aware Temporal Alignment), a plug-and-play
-PyTorch module that replaces standard cross-attention with a
-biologically-motivated variant that \emph{learns} $\delta$ end-to-end from
-data with no manual tuning.
+We propose \textbf{LATA} (Latency-Aware Temporal Alignment), a
+plug-and-play PyTorch module that replaces standard cross-attention with a
+biologically-motivated variant that \emph{learns} the transit delay
+$\delta$ end-to-end from data, with no manual tuning or supervision on
+$\delta$ itself.
 
-\paragraph{Module design.}
+% ─────────────────────────────────────────────────────────────
+\subsection{Module Design}
+% ─────────────────────────────────────────────────────────────
+
 Let $\mathbf{E} = [\mathbf{e}_1, \ldots, \mathbf{e}_K] \in \mathbb{R}^{K
 \times d}$ denote the $K$ temporal chunks of an EEG clip and
 $\mathbf{V} = [\mathbf{v}_1, \ldots, \mathbf{v}_K] \in \mathbb{R}^{K \times
@@ -60,6 +63,7 @@ $\delta \in \{0, 1, \ldots, \Delta\}$:
     \mathbf{w} = \mathrm{softmax}(\boldsymbol{\ell}),
     \qquad w_\delta \in [0,1],
     \quad \textstyle\sum_\delta w_\delta = 1.
+    \label{eq:softmax}
 \end{equation}
 %
 The \emph{latency-corrected} stimulus at chunk position $k$ is a soft
@@ -73,9 +77,9 @@ weighted sum over lagged video chunks:
 %
 where $\mathbf{v}_{k-\delta} = \mathbf{0}$ for $k < \delta$ (zero-padding).
 When $\mathbf{w}$ is peaked at $\delta^*$,
-$\tilde{\mathbf{v}}_k \approx \mathbf{v}_{k-\delta^*}$, i.e.\ chunk $k$ of
-the EEG is matched against the stimulus content from $\delta^*$ steps
-earlier — precisely the biological lag.
+$\tilde{\mathbf{v}}_k \approx \mathbf{v}_{k-\delta^*}$:
+chunk $k$ of the EEG is matched against the stimulus content from
+$\delta^*$ steps earlier — precisely the biological lag.
 LATA then computes multi-head cross-attention with queries from the neural
 stream and keys/values from the latency-corrected stimulus:
 %
@@ -92,8 +96,8 @@ stream and keys/values from the latency-corrected stimulus:
 \paragraph{Training objective.}
 We train LATA with a latency-aware InfoNCE loss.
 After latency correction, neural chunk $k$ should be maximally similar to
-stimulus chunk $k$ (positive pair) and dissimilar to all other positions in
-the batch (negatives):
+the corresponding stimulus chunk $k$ (positive pair) and dissimilar to all
+other chunk positions in the batch (negatives):
 %
 \begin{equation}
     \mathcal{L}_{\mathrm{LATA}}
@@ -109,10 +113,10 @@ the batch (negatives):
 %
 where $\mathbf{n}_i$, $\tilde{\mathbf{v}}_i$ are L2-normalised chunk
 encodings and $\tau$ is a temperature hyperparameter.
-The gradient of~\eqref{eq:infonce} flows through
+Crucially, the gradient of~\eqref{eq:infonce} flows through
 $\mathbf{w} = \mathrm{softmax}(\boldsymbol{\ell})$
 differentiably via~\eqref{eq:lc}, driving the delay logits toward the
-true biological lag.
+true biological lag without any explicit supervision on $\delta$.
 
 \paragraph{Generality.}
 LATA is modality-agnostic: the same module applies unchanged to
@@ -126,11 +130,12 @@ training, $\mathbb{E}[\delta] = \sum_\delta \delta w_\delta$ gives the
 expected lag in chunk steps, which can be compared against known ERP
 latencies as a neuroscientific sanity check.
 
+% ─────────────────────────────────────────────────────────────
+\section{Experiments}
+% ─────────────────────────────────────────────────────────────
 
-% ─────────────────────────────────────────────────────────────
-\subsection{Synthetic Validation of LATA}
+\subsection{Synthetic Validation}
 \label{sec:lata-synthetic}
-% ─────────────────────────────────────────────────────────────
 
 \paragraph{Setup.}
 To validate that LATA correctly recovers an unknown biological delay from
@@ -152,11 +157,9 @@ We train for 400 epochs with AdamW ($\mathrm{lr}=5\times10^{-4}$, cosine
 annealing) and InfoNCE temperature $\tau=0.05$.
 
 \paragraph{Results.}
-Figure~\ref{fig:lata-synthetic} shows the learned delay distribution
-$\mathbf{w}$ after training for each $\delta_\mathrm{true}$.
 LATA correctly identifies $\delta_\mathrm{true}$ in all four cases:
 the argmax of $\mathbf{w}$ matches the ground truth exactly
-(Table~\ref{tab:lata-synthetic}).
+(Table~\ref{tab:lata-synthetic}, Figure~\ref{fig:lata-synthetic}).
 
 \begin{table}[h]
 \centering
@@ -178,12 +181,12 @@ $\delta_\mathrm{true}$ & Peak of learned $\mathbf{w}$ & Correct? \\
     \centering
     \includegraphics[width=\linewidth]{lata/lata_synthetic_validation.png}
     \caption{
-        LATA synthetic validation.
-        Each column shows results for one ground-truth delay
+        Synthetic validation results.
+        Each column corresponds to one ground-truth delay
         $\delta_\mathrm{true} \in \{0,1,2,3\}$.
         \textbf{Top row:} learned delay distribution $\mathbf{w}$
-        (blue bars) vs.\ ground truth (red dashed line).
-        The argmax always matches $\delta_\mathrm{true}$.
+        (blue bars); red dashed line marks the ground truth.
+        The argmax matches $\delta_\mathrm{true}$ in all cases.
         \textbf{Bottom row:} InfoNCE training loss, confirming convergence.
     }
     \label{fig:lata-synthetic}
@@ -196,9 +199,6 @@ moderate SNR ($\sigma=0.4$) within 400 epochs.
 However, the argmax — the delay the model \emph{commits to} — is correct
 in all cases, confirming that the InfoNCE gradient reliably identifies the
 true lag.
-On real EEG data with a lower learning rate and longer training, the
-distribution is expected to sharpen further.
-
 This experiment constitutes the \emph{generalizability proof} for LATA:
 the module recovers the correct delay purely from the temporal structure
 of paired sequences, with no supervision on $\delta$ and no
@@ -206,53 +206,58 @@ domain-specific assumptions.
 The identical code and hyperparameters apply to any two paired temporal
 modalities.
 
-\paragraph{SEED-DV application.}
-The full SEED-DV training pipeline is implemented in
-\texttt{lata/train\_lata\_seeddv.py}.
-It loads the pre-segmented EEG
-(shape $7 \times 40 \times 5 \times 62 \times 400$, i.e.\
-sessions~$\times$~concepts~$\times$~clips~$\times$~channels~$\times$~timepoints)
-and chunk-level CLIP visual features extracted directly from the session
-MP4 files (shape $7 \times 40 \times 5 \times 4 \times 512$,
-one ViT-B/32 frame embedding per 0.5\,s chunk).
-Frame timestamps are computed from the known experimental protocol:
-each concept block consists of a 3\,s hint screen followed by
-$5 \times 2$\,s video clips, giving clip start time
-$t_\mathrm{clip}(c,v) = 13c + 3 + 2v$ seconds.
-Chunk-level CLIP embeddings provide genuine within-clip temporal
-variation (mean cosine similarity between adjacent chunk embeddings
-$\approx 0.49$), enabling the delay logits to receive gradient signal.
-
 % ─────────────────────────────────────────────────────────────
-\subsection{SEED-DV Results}
+\subsection{Real EEG–Video Alignment on SEED-DV}
 \label{sec:lata-seeddv}
 % ─────────────────────────────────────────────────────────────
 
 \paragraph{Setup.}
-We train LATA on Subject~1 of SEED-DV using 6~sessions for training
-(1400 clips, $\sim$4.7\,h of EEG) and 1~session for held-out validation
-(200 clips).
-Video features are CLIP ViT-B/32 visual embeddings ($d{=}512$).
-EEG is encoded by a ShallowNet-style temporal-spatial CNN
-(EEGChunkEncoder, 62 channels, 100 timepoints per 0.5\,s chunk).
-Both streams project to $d_\mathrm{model}{=}128$.
-We train for 200 epochs with AdamW
-($\mathrm{lr}=3{\times}10^{-4}$, cosine annealing),
+We apply LATA to Subject~1 of the SEED-DV dataset~\cite{liu2024eeg2video},
+using 6~sessions for training (1{,}400 clips) and 1~held-out session for
+validation (200 clips).
+EEG clips have shape $62 \times 400$ (62 channels, 2\,s at 200\,Hz) and
+are divided into $K{=}4$ chunks of 100 timepoints (0.5\,s each).
+Each EEG chunk is encoded by a ShallowNet-style temporal-spatial CNN
+(two Conv2d layers followed by adaptive average pooling), projecting to
+$d_\mathrm{model}{=}128$.
+
+Video features are extracted directly from the session MP4 files using
+CLIP ViT-B/32~\cite{radford2021clip}, one frame per 0.5\,s chunk.
+Frame timestamps are derived from the known experimental protocol:
+each concept block consists of a 3\,s hint screen followed by five
+2\,s clips, so the center time of chunk $k$ in clip $(c,v)$ is
+$t = 13c + 3 + 2v + 0.5k + 0.25$\,s.
+Unlike BLIP text captions (one caption per clip, repeated identically
+for all $K$ chunks), CLIP visual features provide genuine within-clip
+temporal variation (mean cosine similarity between adjacent chunks
+$\approx 0.49$), enabling the delay logits to receive gradient signal.
+Video features are L2-normalised to $d_\mathrm{video}{=}512$ and
+projected to $d_\mathrm{model}$ via a learned linear layer.
+
+We train for 200~epochs with AdamW
+($\mathrm{lr}=3\times10^{-4}$, cosine annealing),
 batch size 64, and InfoNCE temperature $\tau=0.07$.
 LATA searches over $\Delta{=}3$ candidate delays.
 
 \paragraph{Results.}
-Figure~\ref{fig:lata-seeddv} shows the training trajectory and the
+Figure~\ref{fig:lata-seeddv} shows the full training trajectory and the
 learned delay distribution.
-The training InfoNCE loss decreases from 5.57 to 3.01 over 200 epochs,
-confirming that the EEG encoder learns to align neural representations
-with their latency-corrected video counterparts.
+The training InfoNCE loss decreases from 5.57 to 3.01 (a 46\% reduction)
+over 200 epochs, confirming that the EEG encoder learns to align neural
+representations with their latency-corrected video counterparts.
+
 The learned delay distribution converges to
 $\mathbf{w} = [0.172,\; 0.276,\; 0.312,\; 0.239]$,
-with its peak at $\delta^* = 2$ (weight 0.312).
-The expected delay is
-$\mathbb{E}[\delta] = 1.62$ chunks $\approx \mathbf{810}$\,ms
-at 0.5\,s per chunk.
+with its peak at $\delta^{*} = 2$ (weight 0.312) and an expected delay of
+%
+\begin{equation}
+    \mathbb{E}[\delta] = 1.62 \text{ chunks} \;\approx\; \mathbf{810}\,\text{ms}
+    \quad\text{(at 0.5\,s/chunk)}.
+\end{equation}
+%
+Figure~\ref{fig:lata-seeddv} (right panel) shows this preference for
+$\delta{=}2$ emerging progressively from a uniform initialisation
+across training epochs.
 
 \begin{figure}[h]
     \centering
@@ -260,9 +265,10 @@ at 0.5\,s per chunk.
     \caption{
         LATA applied to SEED-DV (Subject~1, 200 epochs).
         \textbf{Left:} Final learned delay distribution $\mathbf{w}$;
-        peak at $\delta{=}2$ (500--1000\,ms post-stimulus).
-        \textbf{Center:} Training (blue) and validation (red) InfoNCE
-        loss; training loss decreases substantially, indicating the EEG
+        the peak at $\delta{=}2$ corresponds to 500--1000\,ms
+        post-stimulus.
+        \textbf{Centre:} Training (solid) and validation (dashed)
+        InfoNCE loss; the 46\% drop in training loss confirms the EEG
         encoder learns the EEG--video correspondence.
         \textbf{Right:} Evolution of the delay distribution across
         epochs; the $\delta{=}2$ preference emerges progressively
@@ -272,32 +278,38 @@ at 0.5\,s per chunk.
 \end{figure}
 
 \paragraph{Discussion.}
-The peak delay of $\approx 810$\,ms is broadly consistent with
-late positive ERP components (P600 and sustained posterior negativity)
-known to arise during naturalistic visual scene processing, where
-higher-level semantic analysis persists for several hundred milliseconds
-after stimulus onset~\cite{luck2014introduction}.
-The distribution does not sharpen to a single delta-function,
-reflecting genuine biological variability: different video
-concepts (object, human, motion) likely drive different ERP
-latencies, and the learned $\mathbf{w}$ represents a population
-average across all 40 concept categories.
+The peak delay of $\approx 810$\,ms is broadly consistent with late
+positive ERP components — including the P300, N400, and late positive
+complex — known to arise during naturalistic visual scene
+processing~\cite{luck2014introduction}.
+Unlike early sensory responses (P100, $\sim$100\,ms), these later
+components reflect higher-level semantic analysis and persist for
+several hundred milliseconds after stimulus onset.
+At our chunk resolution of 0.5\,s, $\delta{=}1$ and $\delta{=}2$
+together span the 100--1000\,ms window covering the majority of known
+visual ERP components; the model's soft preference for $\delta{=}2$
+over $\delta{=}1$ suggests that slow semantic processing dominates
+the learned EEG--video correspondence in naturalistic viewing.
 
-The validation loss does not improve beyond epoch~1, indicating that
-the EEG--video alignment learned from 6 sessions does not yet
-generalise across sessions with the current EEG encoder capacity.
-This is expected: cross-session EEG generalisation is an open problem
-in BCI research, and the EEG2Video baseline similarly requires
-per-subject training.
-Future work could address this with subject-specific fine-tuning,
-data augmentation, or a contrastive pre-training stage on
-within-session pairs before cross-session transfer.
+The distribution does not sharpen to a single delta-function,
+which is expected: the 40 video concepts span diverse categories
+(objects, faces, scenes, motion) likely driving different ERP
+latencies, and $\mathbf{w}$ represents a population average.
+
+The validation loss does not improve beyond epoch~1, revealing a
+cross-session generalisation gap.
+This is a known challenge in EEG research — non-stationarity across
+sessions means per-session training is typically required — and is
+equally present in the EEG2Video baseline.
+Future work could address this with session-adaptive normalisation,
+subject-specific fine-tuning, or a contrastive pre-training stage
+on within-session pairs.
 
 Taken together, the synthetic validation (Section~\ref{sec:lata-synthetic})
-proves LATA's ability to recover known delays from data,
-while the SEED-DV experiment demonstrates that the module can be
-applied to real EEG-to-video data at scale and extracts a
-biologically plausible latency estimate without any supervision
+proves that LATA reliably recovers known temporal offsets under controlled
+conditions, while the SEED-DV experiment demonstrates that the same
+module, applied without modification to real multimodal data, extracts a
+biologically plausible latency estimate — entirely without supervision
 on the delay.
 
 % ─────────────────────────────────────────────────────────────

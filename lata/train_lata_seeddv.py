@@ -170,7 +170,14 @@ def train(args):
 
     # ── Video features ───────────────────────────────────────────────────────
     # Shape on disk: (7, 40, 5, 4, 512) — sessions × concepts × clips × chunks × d
-    vid_feat_path = os.path.join(os.path.dirname(__file__), "video_features_clip_text.npy")
+    # Default: CLIP visual features (chunk-level, extracted by extract_visual_features_pyav.py)
+    # Fallback: CLIP text features from BLIP captions (clip-level, no within-clip variation)
+    if args.vid_feat_path:
+        vid_feat_path = args.vid_feat_path
+    else:
+        visual_path = os.path.join(os.path.dirname(__file__), "video_features_clip_visual.npy")
+        text_path   = os.path.join(os.path.dirname(__file__), "video_features_clip_text.npy")
+        vid_feat_path = visual_path if os.path.exists(visual_path) else text_path
     K       = 4
     d_video = 512
 
@@ -181,8 +188,8 @@ def train(args):
         video_feats_train = vid_all[:n_train]      # (n_train, 40, 5, 4, 512)
         video_feats_val   = vid_all[n_train:n_train + 1]
     else:
-        print("WARNING: video_features_clip_text.npy not found — using random placeholders.")
-        print("Run extract_video_features.py first.")
+        print("WARNING: no video features found — using random placeholders.")
+        print("Run extract_visual_features_pyav.py first.")
         video_feats_train = None
         video_feats_val   = None
 
@@ -292,8 +299,10 @@ if __name__ == "__main__":
     p.add_argument("--d-model",     type=int,   default=128)
     p.add_argument("--n-heads",     type=int,   default=4)
     p.add_argument("--max-delay",   type=int,   default=3)
-    p.add_argument("--lr",          type=float, default=3e-4)
-    p.add_argument("--temperature", type=float, default=0.07)
+    p.add_argument("--lr",           type=float, default=3e-4)
+    p.add_argument("--temperature",  type=float, default=0.07)
+    p.add_argument("--vid-feat-path", type=str,   default=None,
+                   help="Path to .npy video features (default: auto-detect visual then text)")
     args = p.parse_args()
 
     train(args)

@@ -1,9 +1,32 @@
-% ============================================================
-% Rachel's section — drop into the team's NeurIPS-format paper
-% Covers: Proposed Method (LATA) + Experimental Methodology + Results
-% ============================================================
+\documentclass[11pt]{article}
+
+% ── Core packages ────────────────────────────────────────────
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}   % math + \checkmark
+\usepackage{booktabs}           % \toprule \midrule \bottomrule
+\usepackage{graphicx}           % \includegraphics
+\usepackage{hyperref}           % links
+\usepackage{parskip}            % paragraph spacing
+\usepackage{microtype}          % better typography
+\usepackage{natbib}             % \cite
+
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+
+\title{\textbf{LATA: Latency-Aware Temporal Alignment}\\
+\large Section draft for team NeurIPS report\\
+\normalsize MAS.S60 / 6.S985 --- Multimodal AI --- Spring 2026}
+\author{Rachel Li}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
 
 % ─────────────────────────────────────────────────────────────
+\section{Proposed Method}
+% ─────────────────────────────────────────────────────────────
+
 \subsection{Latency-Aware Temporal Alignment (LATA)}
 % ─────────────────────────────────────────────────────────────
 
@@ -198,3 +221,40 @@ used in the EEG2Video evaluation metrics.
 We leave the full SEED-DV result for future work and note that the
 synthetic validation already establishes LATA's correctness and
 generality as a standalone module.
+
+% ─────────────────────────────────────────────────────────────
+\section*{References}
+% ─────────────────────────────────────────────────────────────
+
+\begin{thebibliography}{9}
+
+\bibitem{luck2014introduction}
+S.~J. Luck.
+\newblock \emph{An Introduction to the Event-Related Potential Technique}.
+\newblock MIT Press, 2nd edition, 2014.
+
+\bibitem{tong2022videomae}
+Z.~Tong, Y.~Song, J.~Wang, and L.~Wang.
+\newblock VideoMAE: Masked autoencoders are data-efficient learners for
+  self-supervised video pre-training.
+\newblock \emph{Advances in Neural Information Processing Systems}, 35,
+  2022.
+
+\bibitem{liu2024eeg2video}
+X.-H. Liu, Y.-K. Liu, Y.~Wang, K.~Ren, H.~Shi, Z.~Wang, D.~Li, B.-L. Lu,
+  and W.-L. Zheng.
+\newblock EEG2Video: Towards decoding dynamic visual perception from EEG
+  signals.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37,
+  2024.
+
+\bibitem{radford2021clip}
+A.~Radford, J.~W. Kim, C.~Hallacy, A.~Ramesh, G.~Goh, S.~Agarwal,
+  G.~Sastry, A.~Askell, P.~Mishkin, J.~Clark, G.~Krueger, and I.~Sutskever.
+\newblock Learning transferable visual models from natural language
+  supervision.
+\newblock In \emph{Proceedings of ICML}, 2021.
+
+\end{thebibliography}
+
+\end{document}

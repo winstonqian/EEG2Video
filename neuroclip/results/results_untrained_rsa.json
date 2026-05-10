@@ -1,0 +1,13 @@
+{
+  "trained_mean": 0.03781926733544822,
+  "trained_std": 0.054844309259865255,
+  "untrained_mean": 0.02083633605766946,
+  "untrained_std": 0.0518360292216079,
+  "t_trained_vs_zero": 3.083873377659067,
+  "p_trained_vs_zero": 0.005855005863120544,
+  "t_untrained_vs_zero": 1.7976478725942686,
+  "p_untrained_vs_zero": 0.08734853351988983,
+  "t_trained_vs_untrained": 1.7217722123109762,
+  "p_trained_vs_untrained": 0.10054257556096825,
+  "n_subjects": 21
+}

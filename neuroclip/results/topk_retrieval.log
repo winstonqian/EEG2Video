@@ -1,0 +1,39 @@
+Device: mps
+  sub1: R@1=10.00%  MRR=0.2133
+  sub10: R@1=3.00%  MRR=0.1152
+  sub11: R@1=3.50%  MRR=0.1271
+  sub12: R@1=3.50%  MRR=0.1296
+  sub13: R@1=6.00%  MRR=0.1618
+  sub14: R@1=5.50%  MRR=0.1441
+  sub15: R@1=3.50%  MRR=0.1247
+  sub16: R@1=3.00%  MRR=0.1210
+  sub17: R@1=3.00%  MRR=0.1525
+  sub18: R@1=3.50%  MRR=0.1515
+  sub19: R@1=2.50%  MRR=0.1233
+  sub1_session2: R@1=12.50%  MRR=0.2484
+  sub2: R@1=6.00%  MRR=0.1516
+  sub20: R@1=4.00%  MRR=0.1175
+  sub3: R@1=3.00%  MRR=0.1218
+  sub4: R@1=3.50%  MRR=0.1261
+  sub5: R@1=5.50%  MRR=0.1402
+  sub6: R@1=3.00%  MRR=0.1269
+  sub7: R@1=3.00%  MRR=0.1218
+  sub8: R@1=5.50%  MRR=0.1522
+  sub9: R@1=3.00%  MRR=0.1244
+
+21 subjects
+
+Retrieval curve (mean ± sem across subjects):
+  R@ 1: 4.57% ± 0.54%  (chance=2.5%)  t=3.77  **
+  R@ 2: 8.74% ± 0.75%  (chance=5.0%)  t=4.88  ***
+  R@ 3: 12.29% ± 0.94%  (chance=7.5%)  t=4.96  ***
+  R@ 5: 18.29% ± 1.12%  (chance=12.5%)  t=5.04  ***
+  R@10: 32.98% ± 1.38%  (chance=25.0%)  t=5.65  ***
+  R@20: 58.00% ± 1.38%  (chance=50.0%)  t=5.64  ***
+
+  MRR:  0.1426 ± 0.0070  (chance=0.1070)  t=4.97  ***
+
+Activity MRR: 0.1559  Passive MRR: 0.1387  t=1.70  n.s.
+Activity R@5: 20.63%  Passive R@5: 17.60%  t=1.53  n.s.
+
+Saved → neuroclip/figures/F38_topk_retrieval_analysis.png

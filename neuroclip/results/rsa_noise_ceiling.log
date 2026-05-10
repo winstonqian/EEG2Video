@@ -1,0 +1,32 @@
+Device: mps
+Computing per-subject EEG similarity matrices...
+  sub1: cat_RSA=0.0909
+  sub10: cat_RSA=-0.0188
+  sub11: cat_RSA=0.0673
+  sub12: cat_RSA=-0.0233
+  sub13: cat_RSA=-0.0374
+  sub14: cat_RSA=0.1063
+  sub15: cat_RSA=0.0170
+  sub16: cat_RSA=0.0331
+  sub17: cat_RSA=-0.0470
+  sub18: cat_RSA=0.0586
+  sub19: cat_RSA=0.0708
+  sub1_session2: cat_RSA=0.1859
+  sub2: cat_RSA=-0.0149
+  sub20: cat_RSA=0.0463
+  sub3: cat_RSA=0.0564
+  sub4: cat_RSA=0.0812
+  sub5: cat_RSA=-0.0184
+  sub6: cat_RSA=0.0392
+  sub7: cat_RSA=0.0684
+  sub8: cat_RSA=0.0493
+  sub9: cat_RSA=0.0159
+
+21 valid subjects
+Group-average RSA ρ (all 21): 0.1064
+Single-subject-avg RSA ρ (from results_rsa.json): 0.1064
+
+Noise ceiling (split-half, SB-corrected, 50 splits): 0.5894 ± 0.0327
+Single-subject RSA as fraction of ceiling: 18.1%
+Group-average RSA as fraction of ceiling:  18.1%
+Saved → neuroclip/figures/F29_rsa_noise_ceiling.png

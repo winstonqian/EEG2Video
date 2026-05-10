@@ -1,0 +1,15 @@
+Device: mps  |  feature: de  |  chunks: 1
+Chance: concept R@1=0.0250 R@5=0.1250  |  clip R@1=0.0050 R@5=0.0250 R@10=0.0500
+
+=== Subject: sub1.npy ===
+  fold 0:  concept R@1=0.005 R@5=0.070  |  clip R@1=0.005 R@10=0.075
+  fold 1:  concept R@1=0.020 R@5=0.080  |  clip R@1=0.020 R@10=0.120
+  fold 2:  concept R@1=0.015 R@5=0.120  |  clip R@1=0.030 R@10=0.075
+  fold 3:  concept R@1=0.020 R@5=0.140  |  clip R@1=0.030 R@10=0.140
+  fold 4:  concept R@1=0.025 R@5=0.100  |  clip R@1=0.030 R@10=0.180
+  fold 5:  concept R@1=0.000 R@5=0.130  |  clip R@1=0.060 R@10=0.110
+  fold 6:  concept R@1=0.030 R@5=0.105  |  clip R@1=0.000 R@10=0.105
+  sub1.npy mean:  concept R@1=0.016  R@5=0.106  |  clip R@1=0.025  R@10=0.115
+
+=== Subject: sub10.npy ===
+  fold 0:  concept R@1=0.020 R@5=0.115  |  clip R@1=0.035 R@10=0.185

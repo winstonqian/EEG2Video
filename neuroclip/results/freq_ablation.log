@@ -1,0 +1,45 @@
+Device: mps
+Computing full-model baseline...
+  sub1: 2.14%
+  sub10: 1.64%
+  sub11: 2.14%
+  sub12: 2.86%
+  sub13: 2.07%
+  sub14: 2.21%
+  sub15: 2.93%
+  sub16: 2.57%
+  sub17: 2.57%
+  sub18: 2.93%
+  sub19: 3.00%
+  sub1_session2: 3.29%
+  sub2: 2.86%
+  sub20: 1.93%
+  sub3: 2.64%
+  sub4: 3.21%
+  sub5: 2.71%
+  sub6: 2.43%
+  sub7: 2.57%
+  sub8: 2.29%
+  sub9: 2.71%
+Full model: 2.56% ± 0.42%
+
+Ablating delta...
+  delta: 2.70%  drop=-0.14%  t=-1.61  p=0.1229
+Ablating theta...
+  theta: 2.62%  drop=-0.06%  t=-1.27  p=0.2201
+Ablating alpha...
+  alpha: 2.63%  drop=-0.07%  t=-0.63  p=0.5331
+Ablating beta...
+  beta: 2.71%  drop=-0.15%  t=-2.17  p=0.0420
+Ablating gamma...
+  gamma: 2.59%  drop=-0.03%  t=-0.41  p=0.6887
+
+Saved → neuroclip/results/results_freq_ablation.json
+Saved → neuroclip/figures/F19_freq_band_ablation.png
+
+=== Frequency Band Importance (sorted by drop) ===
+  gamma : drop=-0.027pp  n.s.
+  theta : drop=-0.061pp  n.s.
+  alpha : drop=-0.068pp  n.s.
+  delta : drop=-0.139pp  n.s.
+  beta  : drop=-0.153pp  *

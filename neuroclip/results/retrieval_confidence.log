@@ -1,0 +1,21 @@
+Device: mps
+
+21 subjects, 4200 trials
+
+Entropy — Correct: 3.6858 ± 0.0017
+Entropy — Incorrect: 3.6860 ± 0.0019
+Correct < Incorrect (lower entropy = more confident): t=-1.36  p=0.172416  n.s.
+
+Max-Prob — Correct: 0.0296  Incorrect: 0.0291
+Correct > Incorrect: t=3.09  p=0.002002  **
+
+Per-concept entropy → R@1: Spearman ρ=0.0132  p=0.9358  n.s.
+
+Activity entropy: 3.6860 ± 0.0001
+Passive  entropy: 3.6860 ± 0.0001
+Activity < Passive (more confident): t=-0.04  p=0.9662  n.s.
+
+Chance entropy (uniform): 3.6889
+Observed mean entropy: 3.6860  (0.1% below chance)
+
+Saved → neuroclip/figures/F40_retrieval_confidence_analysis.png

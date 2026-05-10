@@ -1,0 +1,27 @@
+Device: mps
+  sub1: early=8.71%  late=9.14%
+  sub10: early=2.57%  late=3.00%
+  sub11: early=4.14%  late=4.21%
+  sub12: early=2.79%  late=2.79%
+  sub13: early=3.21%  late=4.21%
+  sub14: early=2.14%  late=3.57%
+  sub15: early=3.50%  late=4.14%
+  sub16: early=2.07%  late=2.57%
+  sub17: early=3.14%  late=3.00%
+  sub18: early=3.79%  late=4.00%
+  sub19: early=3.79%  late=3.86%
+  sub1_session2: early=12.93%  late=11.93%
+  sub2: early=2.86%  late=3.50%
+  sub20: early=2.43%  late=2.86%
+  sub3: early=2.50%  late=3.21%
+  sub4: early=2.64%  late=2.00%
+  sub5: early=4.71%  late=3.79%
+  sub6: early=3.57%  late=2.86%
+  sub7: early=4.00%  late=3.71%
+  sub8: early=3.29%  late=3.29%
+  sub9: early=2.43%  late=3.07%
+
+Early (0-1s): 3.87% ± 2.44%
+Late  (1-2s): 4.03% ± 2.23%
+Late > Early: t=1.21  p=0.2399  n.s.
+Saved → neuroclip/figures/F33_temporal_dynamics.png

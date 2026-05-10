@@ -1,0 +1,24 @@
+Device: mps
+Computing full-model baseline...
+Full model: 4.50% ± 2.70%
+
+Ablating Frontal (FP,AF,F) (14 channels)...
+  → 4.02%  drop=0.48pp  t=2.71  p=0.0134 *
+Ablating Fronto-Central (FC,FT) (9 channels)...
+  → 4.22%  drop=0.28pp  t=2.34  p=0.0299 *
+Ablating Central+Temporal (C,T) (9 channels)...
+  → 4.19%  drop=0.31pp  t=2.27  p=0.0345 *
+Ablating Parietal (TP,CP,P) (18 channels)...
+  → 3.73%  drop=0.76pp  t=2.23  p=0.0370 *
+Ablating Occipital (PO,O,CB) (12 channels)...
+  → 3.82%  drop=0.67pp  t=3.79  p=0.0011 **
+
+Saved → neuroclip/results/results_brain_region_ablation.json
+Saved → neuroclip/figures/F21_brain_region_ablation.png
+
+=== Brain Region Importance (sorted by drop) ===
+  Parietal              : drop=0.762pp  *  (n=18 channels)
+  Occipital             : drop=0.673pp  **  (n=12 channels)
+  Frontal               : drop=0.476pp  *  (n=14 channels)
+  Central+ Temporal     : drop=0.310pp  *  (n=9 channels)
+  Fronto- Central       : drop=0.276pp  *  (n=9 channels)

@@ -1,0 +1,36 @@
+Device: mps
+Computing per-subject EEG similarity matrices...
+  sub1: done
+  sub10: done
+  sub11: done
+  sub12: done
+  sub13: done
+  sub14: done
+  sub15: done
+  sub16: done
+  sub17: done
+  sub18: done
+  sub19: done
+  sub1_session2: done
+  sub2: done
+  sub20: done
+  sub3: done
+  sub4: done
+  sub5: done
+  sub6: done
+  sub7: done
+  sub8: done
+  sub9: done
+
+21 valid subjects
+
+Inter-subject EEG RSA: 0.1433 ± 0.1813
+  t=11.424  p=0.0000
+EEG-CLIP RSA per subject: 0.0083 ± 0.0623
+  t=0.597  p=0.5573
+N pairs: 210
+Saved → neuroclip/figures/F23_inter_subject_rsa.png
+
+=== Key Finding ===
+Mean inter-subject EEG RSA: 0.1433 ***
+→ Some shared structure across subjects (ρ=0.1433)

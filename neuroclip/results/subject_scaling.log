@@ -1,0 +1,47 @@
+Device: mps  |  Test subject: sub10  |  Chance: 0.0250
+  N= 2  seed=0  R@1=0.0250  (14s)
+  N= 2  seed=1  R@1=0.0279  (12s)
+  N= 2  seed=2  R@1=0.0307  (12s)
+  N= 2  → mean=2.79% ± 0.23%
+
+  N= 4  seed=0  R@1=0.0264  (25s)
+  N= 4  seed=1  R@1=0.0214  (25s)
+  N= 4  seed=2  R@1=0.0293  (26s)
+  N= 4  → mean=2.57% ± 0.32%
+
+  N= 6  seed=0  R@1=0.0321  (39s)
+  N= 6  seed=1  R@1=0.0271  (40s)
+  N= 6  seed=2  R@1=0.0357  (38s)
+  N= 6  → mean=3.17% ± 0.35%
+
+  N= 8  seed=0  R@1=0.0329  (51s)
+  N= 8  seed=1  R@1=0.0243  (52s)
+  N= 8  seed=2  R@1=0.0214  (56s)
+  N= 8  → mean=2.62% ± 0.49%
+
+  N=10  seed=0  R@1=0.0250  (65s)
+  N=10  seed=1  R@1=0.0279  (65s)
+  N=10  seed=2  R@1=0.0336  (66s)
+  N=10  → mean=2.88% ± 0.36%
+
+  N=15  seed=0  R@1=0.0243  (97s)
+  N=15  seed=1  R@1=0.0236  (98s)
+  N=15  seed=2  R@1=0.0286  (97s)
+  N=15  → mean=2.55% ± 0.22%
+
+  N=20  seed=0  R@1=0.0221  (129s)
+  N=20  seed=1  R@1=0.0329  (130s)
+  N=20  seed=2  R@1=0.0321  (132s)
+  N=20  → mean=2.90% ± 0.49%
+
+Saved → neuroclip/figures/F14_subject_scaling.png
+Saved → neuroclip/results/results_subject_scaling.json
+
+=== Subject Scaling Results ===
+  N= 2: 2.79% ± 0.23%
+  N= 4: 2.57% ± 0.32%
+  N= 6: 3.17% ± 0.35%
+  N= 8: 2.62% ± 0.49%
+  N=10: 2.88% ± 0.36%
+  N=15: 2.55% ± 0.22%
+  N=20: 2.90% ± 0.49%

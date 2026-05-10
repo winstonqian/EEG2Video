@@ -1,0 +1,54 @@
+/Users/winstonqian/Desktop/Harvard/Spring 2026/6.S985/mmai/final-project/EEG2Video/neuroclip/confusion_matrix_analysis.py:214: RuntimeWarning: Mean of empty slice.
+  bin_means = [conf_flat[(clip_flat>=bins[i])&(clip_flat<bins[i+1])].mean()
+/Users/winstonqian/.asdf/installs/python/3.12.3/lib/python3.12/site-packages/numpy/_core/_methods.py:144: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+Device: mps
+  sub1: done
+  sub10: done
+  sub11: done
+  sub12: done
+  sub13: done
+  sub14: done
+  sub15: done
+  sub16: done
+  sub17: done
+  sub18: done
+  sub19: done
+  sub1_session2: done
+  sub2: done
+  sub20: done
+  sub3: done
+  sub4: done
+  sub5: done
+  sub6: done
+  sub7: done
+  sub8: done
+  sub9: done
+
+21 subjects processed
+
+Within-category confusion rate: 0.0270
+Between-category confusion rate: 0.0241
+Within > Between: t=2.11  p=0.034905  *
+
+Activity confusion (1-R@1): 0.9321
+Passive  confusion (1-R@1): 0.9617
+Passive > Activity: t=-6.72  p=0.000000  ***
+
+CLIP similarity → confusion probability:
+  Spearman ρ=0.0506  p=0.045736  *
+  Pearson  r=0.0726  p=0.004133  **
+
+Top-10 most confused pairs (off-diagonal):
+   1. waterfall       → road             rate=0.105  CLIP_sim=0.768  [Nature→Urban]
+   2. boat            → road             rate=0.095  CLIP_sim=0.723  [Vehicles→Urban]
+   3. piano           → forest           rate=0.095  CLIP_sim=0.628  [Music→Nature]
+   4. running         → crowd            rate=0.086  CLIP_sim=0.748  [Sports→Urban]
+   5. horses          → whale            rate=0.086  CLIP_sim=0.673  [Animals→Animals]
+   6. forest          → boat             rate=0.086  CLIP_sim=0.670  [Nature→Vehicles]
+   7. fireworks       → motorcycle       rate=0.086  CLIP_sim=0.625  [Other→Vehicles]
+   8. mountain        → mushrooms        rate=0.086  CLIP_sim=0.703  [Nature→Nature]
+   9. pizza           → motorcycle       rate=0.086  CLIP_sim=0.605  [Food→Vehicles]
+  10. mountain        → whale            rate=0.076  CLIP_sim=0.680  [Nature→Animals]
+
+Saved → neuroclip/figures/F35_confusion_matrix_analysis.png

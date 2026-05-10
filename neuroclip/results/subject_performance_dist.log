@@ -1,0 +1,45 @@
+Per-subject R@1 statistics:
+  Mean:   4.50%
+  Std:    2.70%
+  Min:    2.79%  (worst subject)
+  Max:    14.64%  (best subject)
+  Median: 3.79%
+
+Shapiro-Wilk normality test: W=0.5603  p=0.0000  (non-normal)
+
+Overall R@1 ↔ Activity-Passive gap: Spearman ρ=0.4738  p=0.0300  *
+
+Top-half subjects (n=12):
+  Activity: 9.02%  Passive: 4.52%  gap=4.51pp  t=1.90  n.s.
+Bottom-half subjects (n=9):
+  Activity: 3.81%  Passive: 2.92%  gap=0.89pp  t=2.36  *
+
+Subjects below chance (R@1 < 2.5%): 0/21
+Subjects at 2×chance or better (R@1 > 5.0%): 2/21
+
+Coefficient of variation across subjects (overall R@1): 0.6004
+
+Subject ranking (sorted by R@1):
+   1. R@1=14.64%  Activity=34.29%  Passive=8.94%  gap=+25.35pp
+   2. R@1=9.93%  Activity=23.49%  Passive=5.99%  gap=+17.50pp
+   3. R@1=5.00%  Activity=6.98%  Passive=4.42%  gap=+2.56pp
+   4. R@1=4.71%  Activity=5.40%  Passive=4.52%  gap=+0.88pp
+   5. R@1=4.50%  Activity=7.30%  Passive=3.69%  gap=+3.61pp
+   6. R@1=4.21%  Activity=5.71%  Passive=3.78%  gap=+1.94pp
+   7. R@1=4.07%  Activity=3.81%  Passive=4.15%  gap=-0.34pp
+   8. R@1=4.00%  Activity=4.44%  Passive=3.87%  gap=+0.57pp
+   9. R@1=3.86%  Activity=2.22%  Passive=4.33%  gap=-2.11pp
+  10. R@1=3.86%  Activity=4.13%  Passive=3.78%  gap=+0.35pp
+  11. R@1=3.79%  Activity=5.40%  Passive=3.32%  gap=+2.08pp
+  12. R@1=3.79%  Activity=5.08%  Passive=3.41%  gap=+1.67pp
+  13. R@1=3.71%  Activity=4.44%  Passive=3.50%  gap=+0.94pp
+  14. R@1=3.57%  Activity=5.40%  Passive=3.04%  gap=+2.36pp
+  15. R@1=3.29%  Activity=4.44%  Passive=2.95%  gap=+1.50pp
+  16. R@1=3.07%  Activity=4.44%  Passive=2.67%  gap=+1.77pp
+  17. R@1=3.00%  Activity=4.13%  Passive=2.67%  gap=+1.45pp
+  18. R@1=2.93%  Activity=1.90%  Passive=3.23%  gap=-1.32pp
+  19. R@1=2.86%  Activity=2.86%  Passive=2.86%  gap=-0.00pp
+  20. R@1=2.86%  Activity=2.86%  Passive=2.86%  gap=-0.00pp
+  21. R@1=2.79%  Activity=3.81%  Passive=2.49%  gap=+1.32pp
+
+Saved → neuroclip/figures/F43_subject_performance_distribution.png

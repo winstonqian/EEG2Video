@@ -1,0 +1,64 @@
+Per-concept DE band profile (delta, theta, alpha, beta, gamma):
+  [P] cat            : -15.217  -19.667  -20.530  -22.360  -24.603  [Animals]
+  [P] husky          : -15.332  -19.627  -20.483  -22.308  -24.605  [Animals]
+  [P] elephant       : -15.184  -19.593  -20.483  -22.318  -24.599  [Animals]
+  [P] horses         : -15.175  -19.592  -20.494  -22.351  -24.717  [Animals]
+  [P] panda          : -15.303  -19.682  -20.561  -22.366  -24.672  [Animals]
+  [P] rabbit         : -15.245  -19.578  -20.464  -22.272  -24.590  [Animals]
+  [P] bird           : -15.283  -19.642  -20.480  -22.310  -24.703  [Animals]
+  [P] fish           : -15.274  -19.639  -20.525  -22.400  -24.758  [Animals]
+  [P] jellyfish      : -15.343  -19.766  -20.660  -22.431  -24.701  [Animals]
+  [P] whale          : -15.196  -19.653  -20.563  -22.378  -24.720  [Animals]
+  [P] turtle         : -15.130  -19.585  -20.490  -22.316  -24.669  [Animals]
+  [P] flowers        : -15.361  -19.654  -20.498  -22.353  -24.674  [Nature]
+  [P] mushrooms      : -15.322  -19.594  -20.430  -22.312  -24.647  [Nature]
+  [P] forest         : -15.280  -19.575  -20.449  -22.296  -24.641  [Nature]
+  [A] boxing         : -15.024  -19.502  -20.549  -22.329  -24.636  [Sports]
+  [A] dancing        : -15.348  -19.739  -20.640  -22.374  -24.603  [Sports]
+  [A] running        : -15.190  -19.628  -20.515  -22.286  -24.625  [Sports]
+  [A] skiing         : -15.319  -19.793  -20.658  -22.386  -24.614  [Sports]
+  [A] computer       : -15.299  -19.790  -20.551  -22.376  -24.679  [People]
+  [A] construction   : -15.045  -19.424  -20.342  -22.182  -24.566  [People]
+  [P] crowd          : -15.120  -19.457  -20.388  -22.327  -24.671  [Urban]
+  [P] beach          : -15.246  -19.692  -20.595  -22.445  -24.777  [Urban]
+  [P] city           : -15.059  -19.467  -20.401  -22.316  -24.661  [Urban]
+  [P] mountain       : -15.253  -19.531  -20.458  -22.336  -24.697  [Nature]
+  [P] road           : -15.225  -19.720  -20.594  -22.382  -24.770  [Urban]
+  [P] waterfall      : -15.213  -19.584  -20.442  -22.263  -24.658  [Nature]
+  [P] fireworks      : -15.237  -19.786  -20.662  -22.423  -24.691  [Other]
+  [P] banana         : -15.135  -19.614  -20.590  -22.378  -24.609  [Food]
+  [P] cheesecake     : -15.152  -19.632  -20.512  -22.355  -24.619  [Food]
+  [P] drink          : -15.219  -19.716  -20.475  -22.315  -24.666  [Food]
+  [P] pizza          : -15.334  -19.705  -20.538  -22.404  -24.707  [Food]
+  [P] watermelon     : -15.312  -19.658  -20.537  -22.411  -24.810  [Food]
+  [A] drums          : -15.149  -19.547  -20.511  -22.311  -24.613  [Music]
+  [A] guitar         : -15.240  -19.606  -20.578  -22.345  -24.661  [Music]
+  [A] piano          : -15.213  -19.614  -20.592  -22.383  -24.651  [Music]
+  [P] motorcycle     : -15.255  -19.634  -20.525  -22.298  -24.586  [Vehicles]
+  [P] car            : -15.220  -19.612  -20.489  -22.318  -24.645  [Vehicles]
+  [P] balloon        : -15.147  -19.586  -20.525  -22.247  -24.541  [Vehicles]
+  [P] airplane       : -15.278  -19.645  -20.548  -22.335  -24.664  [Vehicles]
+  [P] boat           : -15.222  -19.608  -20.420  -22.299  -24.674  [Vehicles]
+
+Per-band Activity vs Passive DE comparison:
+  delta  : Activity=-15.2029 ± 0.1081  Passive=-15.2345 ± 0.0724  t=0.99  p=0.3265  n.s.
+  theta  : Activity=-19.6269 ± 0.1204  Passive=-19.6288 ± 0.0713  t=0.06  p=0.9527  n.s.
+  alpha  : Activity=-20.5484 ± 0.0873  Passive=-20.5100 ± 0.0660  t=-1.39  p=0.1738  n.s.
+  beta   : Activity=-22.3303 ± 0.0618  Passive=-22.3426 ± 0.0493  t=0.60  p=0.5493  n.s.
+  gamma  : Activity=-24.6275 ± 0.0319  Passive=-24.6692 ± 0.0598  t=1.96  p=0.0575  n.s.
+
+Overall mean DE by band: -15.227 -19.628 -20.519 -22.340 -24.660
+  delta   ANOVA across 9 categories: F=0.77  p=0.6311  n.s.
+  theta   ANOVA across 9 categories: F=1.04  p=0.4313  n.s.
+  alpha   ANOVA across 9 categories: F=2.38  p=0.0398  *
+  beta    ANOVA across 9 categories: F=1.83  p=0.1083  n.s.
+  gamma   ANOVA across 9 categories: F=1.44  p=0.2195  n.s.
+
+Correlation of each band's DE with R@1:
+  delta  : ρ=0.0379  p=0.8163  n.s.
+  theta  : ρ=-0.0236  p=0.8853  n.s.
+  alpha  : ρ=-0.2104  p=0.1925  n.s.
+  beta   : ρ=-0.0579  p=0.7226  n.s.
+  gamma  : ρ=0.1730  p=0.2858  n.s.
+
+Saved → neuroclip/figures/F47_frequency_band_profile.png

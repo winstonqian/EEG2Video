@@ -1,0 +1,136 @@
+Device: mps
+Subjects: 21
+
+============================================================
+alpha=0.00  (text=0%, image=100%)
+  sub1.npy: R@1=0.113
+  sub10.npy: R@1=0.023
+  sub11.npy: R@1=0.046
+  sub12.npy: R@1=0.032
+  sub13.npy: R@1=0.038
+  sub14.npy: R@1=0.030
+  sub15.npy: R@1=0.036
+  sub16.npy: R@1=0.039
+  sub17.npy: R@1=0.035
+  sub18.npy: R@1=0.050
+  sub19.npy: R@1=0.042
+  sub1_session2.npy: R@1=0.140
+  sub2.npy: R@1=0.043
+  sub20.npy: R@1=0.031
+  sub3.npy: R@1=0.029
+  sub4.npy: R@1=0.030
+  sub5.npy: R@1=0.039
+  sub6.npy: R@1=0.040
+  sub7.npy: R@1=0.036
+  sub8.npy: R@1=0.033
+  sub9.npy: R@1=0.033
+  alpha=0.00  Mean R@1=4.456% ± 2.757%
+
+============================================================
+alpha=0.25  (text=25%, image=75%)
+  sub1.npy: R@1=0.113
+  sub10.npy: R@1=0.024
+  sub11.npy: R@1=0.029
+  sub12.npy: R@1=0.034
+  sub13.npy: R@1=0.046
+  sub14.npy: R@1=0.034
+  sub15.npy: R@1=0.041
+  sub16.npy: R@1=0.040
+  sub17.npy: R@1=0.034
+  sub18.npy: R@1=0.044
+  sub19.npy: R@1=0.044
+  sub1_session2.npy: R@1=0.141
+  sub2.npy: R@1=0.034
+  sub20.npy: R@1=0.027
+  sub3.npy: R@1=0.027
+  sub4.npy: R@1=0.029
+  sub5.npy: R@1=0.044
+  sub6.npy: R@1=0.036
+  sub7.npy: R@1=0.034
+  sub8.npy: R@1=0.038
+  sub9.npy: R@1=0.033
+  alpha=0.25  Mean R@1=4.412% ± 2.782%
+
+============================================================
+alpha=0.50  (text=50%, image=50%)
+  sub1.npy: R@1=0.119
+  sub10.npy: R@1=0.031
+  sub11.npy: R@1=0.037
+  sub12.npy: R@1=0.036
+  sub13.npy: R@1=0.045
+  sub14.npy: R@1=0.035
+  sub15.npy: R@1=0.042
+  sub16.npy: R@1=0.031
+  sub17.npy: R@1=0.031
+  sub18.npy: R@1=0.049
+  sub19.npy: R@1=0.053
+  sub1_session2.npy: R@1=0.134
+  sub2.npy: R@1=0.034
+  sub20.npy: R@1=0.032
+  sub3.npy: R@1=0.025
+  sub4.npy: R@1=0.031
+  sub5.npy: R@1=0.031
+  sub6.npy: R@1=0.035
+  sub7.npy: R@1=0.033
+  sub8.npy: R@1=0.039
+  sub9.npy: R@1=0.025
+  alpha=0.50  Mean R@1=4.422% ± 2.773%
+
+============================================================
+alpha=0.75  (text=75%, image=25%)
+  sub1.npy: R@1=0.111
+  sub10.npy: R@1=0.018
+  sub11.npy: R@1=0.040
+  sub12.npy: R@1=0.032
+  sub13.npy: R@1=0.033
+  sub14.npy: R@1=0.024
+  sub15.npy: R@1=0.045
+  sub16.npy: R@1=0.033
+  sub17.npy: R@1=0.034
+  sub18.npy: R@1=0.049
+  sub19.npy: R@1=0.050
+  sub1_session2.npy: R@1=0.146
+  sub2.npy: R@1=0.034
+  sub20.npy: R@1=0.027
+  sub3.npy: R@1=0.022
+  sub4.npy: R@1=0.033
+  sub5.npy: R@1=0.031
+  sub6.npy: R@1=0.036
+  sub7.npy: R@1=0.036
+  sub8.npy: R@1=0.040
+  sub9.npy: R@1=0.024
+  alpha=0.75  Mean R@1=4.276% ± 2.946%
+
+============================================================
+alpha=1.00  (text=100%, image=0%)
+  sub1.npy: R@1=0.101
+  sub10.npy: R@1=0.030
+  sub11.npy: R@1=0.044
+  sub12.npy: R@1=0.031
+  sub13.npy: R@1=0.044
+  sub14.npy: R@1=0.029
+  sub15.npy: R@1=0.038
+  sub16.npy: R@1=0.031
+  sub17.npy: R@1=0.034
+  sub18.npy: R@1=0.046
+  sub19.npy: R@1=0.041
+  sub1_session2.npy: R@1=0.142
+  sub2.npy: R@1=0.032
+  sub20.npy: R@1=0.028
+  sub3.npy: R@1=0.033
+  sub4.npy: R@1=0.027
+  sub5.npy: R@1=0.027
+  sub6.npy: R@1=0.044
+  sub7.npy: R@1=0.027
+  sub8.npy: R@1=0.034
+  sub9.npy: R@1=0.026
+  alpha=1.00  Mean R@1=4.238% ± 2.715%
+
+Saved → neuroclip/results/results_alpha_ablation.json
+
+=== Alpha Ablation Summary ===
+  α=0.00  R@1=4.456% ± 2.757%
+  α=0.25  R@1=4.412% ± 2.782%
+  α=0.50  R@1=4.422% ± 2.773%
+  α=0.75  R@1=4.276% ± 2.946%
+  α=1.00  R@1=4.238% ± 2.715%

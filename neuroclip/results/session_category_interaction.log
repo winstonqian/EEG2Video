@@ -1,0 +1,38 @@
+Device: mps
+  sub1: done all folds
+  sub10: done all folds
+  sub11: done all folds
+  sub12: done all folds
+  sub13: done all folds
+  sub14: done all folds
+  sub15: done all folds
+  sub16: done all folds
+  sub17: done all folds
+  sub18: done all folds
+  sub19: done all folds
+  sub1_session2: done all folds
+  sub2: done all folds
+  sub20: done all folds
+  sub3: done all folds
+  sub4: done all folds
+  sub5: done all folds
+  sub6: done all folds
+  sub7: done all folds
+  sub8: done all folds
+  sub9: done all folds
+
+Per-session Activity vs Passive R@1:
+  Session 1: R@1=4.57%  Activity=5.40%  Passive=4.33%  gap=+1.07pp  t=1.05  n.s.
+  Session 2: R@1=4.69%  Activity=6.88%  Passive=4.06%  gap=+2.82pp  t=1.30  n.s.
+  Session 3: R@1=4.24%  Activity=7.41%  Passive=3.32%  gap=+4.09pp  t=1.90  n.s.
+  Session 4: R@1=4.12%  Activity=6.24%  Passive=3.50%  gap=+2.74pp  t=1.49  n.s.
+  Session 5: R@1=4.38%  Activity=6.98%  Passive=3.63%  gap=+3.36pp  t=2.76  *
+  Session 6: R@1=5.36%  Activity=8.36%  Passive=4.49%  gap=+3.87pp  t=2.22  *
+  Session 7: R@1=4.12%  Activity=6.24%  Passive=3.50%  gap=+2.74pp  t=1.97  n.s.
+
+Mean activity gap across sessions: +2.96pp  t=7.84  p=0.0002  ***
+Sessions with positive gap: 7/7
+
+Activity gap trend across sessions: ρ=0.2857  p=0.5345  n.s.
+
+Saved → neuroclip/figures/F46_session_category_interaction.png

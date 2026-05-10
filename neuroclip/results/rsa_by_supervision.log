@@ -1,0 +1,10 @@
+Device: mps
+
+Computing RSA for condition: both
+  both: ρ=+0.0394±0.0543  t=3.25  p_perm=0.9445 n.s.
+
+Computing RSA for condition: image
+  image: ρ=+0.0208±0.0423  t=2.20  p_perm=0.1760 n.s.
+
+Both > Image: t=1.79  p=0.0891 n.s.
+Saved → neuroclip/figures/F27_rsa_by_supervision.png

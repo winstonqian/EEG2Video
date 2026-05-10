@@ -1,0 +1,43 @@
+Device: mps
+Computing per-concept R@1 for each subject...
+  sub1: mean=9.93%  best=running (60%)  worst=cat (0%)
+  sub10: mean=2.86%  best=crowd (11%)  worst=cat (0%)
+  sub11: mean=3.71%  best=panda (23%)  worst=husky (0%)
+  sub12: mean=3.86%  best=horses (14%)  worst=cat (0%)
+  sub13: mean=4.07%  best=city (17%)  worst=husky (0%)
+  sub14: mean=3.07%  best=whale (11%)  worst=husky (0%)
+  sub15: mean=5.00%  best=guitar (17%)  worst=elephant (0%)
+  sub16: mean=2.93%  best=cat (14%)  worst=elephant (0%)
+  sub17: mean=2.86%  best=jellyfish (9%)  worst=cat (0%)
+  sub18: mean=4.50%  best=construction (17%)  worst=husky (0%)
+  sub19: mean=4.71%  best=fireworks (17%)  worst=husky (0%)
+  sub1_session2: mean=14.64%  best=computer (83%)  worst=panda (0%)
+  sub2: mean=3.57%  best=bird (11%)  worst=husky (0%)
+  sub20: mean=3.29%  best=jellyfish (17%)  worst=husky (0%)
+  sub3: mean=3.00%  best=airplane (14%)  worst=husky (0%)
+  sub4: mean=2.79%  best=guitar (17%)  worst=elephant (0%)
+  sub5: mean=4.21%  best=turtle (17%)  worst=cat (0%)
+  sub6: mean=3.79%  best=boxing (17%)  worst=turtle (0%)
+  sub7: mean=4.00%  best=construction (17%)  worst=elephant (0%)
+  sub8: mean=3.79%  best=dancing (14%)  worst=horses (0%)
+  sub9: mean=3.86%  best=construction (14%)  worst=horses (0%)
+
+Correlations with per-concept R@1:
+  CLIP isolation (1-mean_sim):  r=0.036  p=0.8268
+  CLIP consistency (sess-sim):  r=-0.165  p=0.3098
+  Neighbor similarity:          r=-0.036  p=0.8268
+Saved → neuroclip/figures/F20_concept_decodability.png
+
+=== Top 5 most decodable concepts ===
+  computer       : R@1=9.5%  isolation=0.2889  consistency=0.6222
+  guitar         : R@1=8.0%  isolation=0.3827  consistency=0.6094
+  construction   : R@1=7.8%  isolation=0.3285  consistency=0.6182
+  boxing         : R@1=7.5%  isolation=0.3822  consistency=0.6870
+  drums          : R@1=7.2%  isolation=0.4053  consistency=0.6166
+
+=== Bottom 5 least decodable concepts ===
+  banana         : R@1=2.9%  isolation=0.3375  consistency=0.6906
+  turtle         : R@1=2.7%  isolation=0.3597  consistency=0.6612
+  flowers        : R@1=2.7%  isolation=0.3624  consistency=0.6319
+  car            : R@1=2.4%  isolation=0.3296  consistency=0.6241
+  mushrooms      : R@1=2.3%  isolation=0.3518  consistency=0.6074

@@ -1,0 +1,34 @@
+Top-K R@1 curve (by descending R@1):
+  K= 5: 8.00%  concepts: ['computer', 'guitar', 'construction', 'boxing', 'drums']...
+  K=10: 6.97%  concepts: ['computer', 'guitar', 'construction', 'boxing', 'drums']...
+  K=15: 6.22%  concepts: ['computer', 'guitar', 'construction', 'boxing', 'drums']...
+  K=20: 5.71%  concepts: ['computer', 'guitar', 'construction', 'boxing', 'drums']...
+  K=25: 5.33%  concepts: ['computer', 'guitar', 'construction', 'boxing', 'drums']...
+  K=30: 5.03%  concepts: ['computer', 'guitar', 'construction', 'boxing', 'drums']...
+  K=40: 4.50%  concepts: ['computer', 'guitar', 'construction', 'boxing', 'drums']...
+
+Activity-only (9 concepts): mean R@1 = 6.79%
+Passive-only (31 concepts): mean R@1 = 3.83%
+Full set (40 concepts):     mean R@1 = 4.50%
+
+Category-diverse optimal order (1 per category first):
+   1. computer        R@1=9.5% [People]
+   2. guitar          R@1=8.0% [Music]
+   3. boxing          R@1=7.5% [Sports]
+   4. husky           R@1=6.4% [Animals]
+   5. crowd           R@1=5.9% [Urban]
+   6. pizza           R@1=5.3% [Food]
+   7. airplane        R@1=4.6% [Vehicles]
+   8. fireworks       R@1=4.1% [Other]
+   9. mountain        R@1=3.9% [Nature]
+  10. construction    R@1=7.8% [People]
+  11. drums           R@1=7.2% [Music]
+  12. running         R@1=6.9% [Sports]
+  13. skiing          R@1=5.2% [Sports]
+  14. cat             R@1=4.9% [Animals]
+  15. city            R@1=4.9% [Urban]
+
+If using TOP-10 concepts vs ALL-40: 6.97% vs 4.50%
+Improvement from concept selection: +2.47 pp
+
+Saved → neuroclip/figures/F34_optimal_concept_subset.png

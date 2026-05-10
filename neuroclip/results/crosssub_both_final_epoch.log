@@ -1,0 +1,93 @@
+Device: mps
+Chance: concept R@1=0.0250
+Total subjects found: 21
+
+=== Test subject: sub1.npy (1/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub1.npy: cross-subject R@1 = 0.029  (chance 0.025)
+
+=== Test subject: sub10.npy (2/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub10.npy: cross-subject R@1 = 0.031  (chance 0.025)
+
+=== Test subject: sub11.npy (3/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub11.npy: cross-subject R@1 = 0.026  (chance 0.025)
+
+=== Test subject: sub12.npy (4/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub12.npy: cross-subject R@1 = 0.025  (chance 0.025)
+
+=== Test subject: sub13.npy (5/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub13.npy: cross-subject R@1 = 0.029  (chance 0.025)
+
+=== Test subject: sub14.npy (6/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub14.npy: cross-subject R@1 = 0.022  (chance 0.025)
+
+=== Test subject: sub15.npy (7/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub15.npy: cross-subject R@1 = 0.027  (chance 0.025)
+
+=== Test subject: sub16.npy (8/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub16.npy: cross-subject R@1 = 0.031  (chance 0.025)
+
+=== Test subject: sub17.npy (9/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub17.npy: cross-subject R@1 = 0.026  (chance 0.025)
+
+=== Test subject: sub18.npy (10/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub18.npy: cross-subject R@1 = 0.030  (chance 0.025)
+
+=== Test subject: sub19.npy (11/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub19.npy: cross-subject R@1 = 0.026  (chance 0.025)
+
+=== Test subject: sub1_session2.npy (12/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub1_session2.npy: cross-subject R@1 = 0.033  (chance 0.025)
+
+=== Test subject: sub2.npy (13/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub2.npy: cross-subject R@1 = 0.028  (chance 0.025)
+
+=== Test subject: sub20.npy (14/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub20.npy: cross-subject R@1 = 0.040  (chance 0.025)
+
+=== Test subject: sub3.npy (15/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub3.npy: cross-subject R@1 = 0.032  (chance 0.025)
+
+=== Test subject: sub4.npy (16/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub4.npy: cross-subject R@1 = 0.033  (chance 0.025)
+
+=== Test subject: sub5.npy (17/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub5.npy: cross-subject R@1 = 0.036  (chance 0.025)
+
+=== Test subject: sub6.npy (18/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub6.npy: cross-subject R@1 = 0.027  (chance 0.025)
+
+=== Test subject: sub7.npy (19/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub7.npy: cross-subject R@1 = 0.029  (chance 0.025)
+
+=== Test subject: sub8.npy (20/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub8.npy: cross-subject R@1 = 0.029  (chance 0.025)
+
+=== Test subject: sub9.npy (21/21) ===
+  Training on 20 subjects × 7 sessions = 28000 clips
+  sub9.npy: cross-subject R@1 = 0.030  (chance 0.025)
+
+=== Cross-Subject Results (NeuroCLIP-Both) ===
+Mean R@1 = 2.942% ± 0.388%
+Chance   = 2.500%
+Within-subject Both = 4.599%
+Saved → neuroclip/results/results_crosssub_both_final_epoch.json

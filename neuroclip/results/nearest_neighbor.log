@@ -1,0 +1,59 @@
+Device: mps
+Nearest-neighbor agreement: 10.0%  (4/40)
+
+CLIP NN in same category: 70.0%
+EEG  NN in same category: 32.5%
+Chance same-category rate: 15.5%
+
+CLIP NN same-cat > chance: p=0.0000  ***
+EEG  NN same-cat > chance: p=0.0070  **
+
+Per-concept nearest neighbors (CLIP vs EEG):
+  ✓ cat             | CLIP NN: husky           [Animals]  |  EEG NN: husky           [Animals]
+  ✓ husky           | CLIP NN: cat             [Animals]  |  EEG NN: cat             [Animals]
+  ✗ elephant        | CLIP NN: horses          [Animals]  |  EEG NN: dancing         [Sports]
+  ✗ horses          | CLIP NN: elephant        [Animals]  |  EEG NN: husky           [Animals]
+  ✗ panda           | CLIP NN: husky           [Animals]  |  EEG NN: rabbit          [Animals]
+  ✗ rabbit          | CLIP NN: husky           [Animals]  |  EEG NN: beach           [Urban]
+  ✗ bird            | CLIP NN: flowers         [Nature]  |  EEG NN: whale           [Animals]
+  ✗ fish            | CLIP NN: whale           [Animals]  |  EEG NN: flowers         [Nature]
+  ✗ jellyfish       | CLIP NN: fish            [Animals]  |  EEG NN: rabbit          [Animals]
+  ✗ whale           | CLIP NN: fish            [Animals]  |  EEG NN: bird            [Animals]
+  ✗ turtle          | CLIP NN: fish            [Animals]  |  EEG NN: construction    [People]
+  ✗ flowers         | CLIP NN: bird            [Animals]  |  EEG NN: boat            [Vehicles]
+  ✗ mushrooms       | CLIP NN: forest          [Nature]  |  EEG NN: boat            [Vehicles]
+  ✗ forest          | CLIP NN: mountain        [Nature]  |  EEG NN: boat            [Vehicles]
+  ✗ boxing          | CLIP NN: dancing         [Sports]  |  EEG NN: construction    [People]
+  ✗ dancing         | CLIP NN: computer        [People]  |  EEG NN: elephant        [Animals]
+  ✗ running         | CLIP NN: dancing         [Sports]  |  EEG NN: watermelon      [Food]
+  ✗ skiing          | CLIP NN: mountain        [Nature]  |  EEG NN: jellyfish       [Animals]
+  ✗ computer        | CLIP NN: construction    [People]  |  EEG NN: drink           [Food]
+  ✗ construction    | CLIP NN: computer        [People]  |  EEG NN: cat             [Animals]
+  ✗ crowd           | CLIP NN: city            [Urban]  |  EEG NN: flowers         [Nature]
+  ✗ beach           | CLIP NN: waterfall       [Nature]  |  EEG NN: rabbit          [Animals]
+  ✗ city            | CLIP NN: road            [Urban]  |  EEG NN: mountain        [Nature]
+  ✗ mountain        | CLIP NN: road            [Urban]  |  EEG NN: boat            [Vehicles]
+  ✗ road            | CLIP NN: mountain        [Nature]  |  EEG NN: beach           [Urban]
+  ✗ waterfall       | CLIP NN: mountain        [Nature]  |  EEG NN: flowers         [Nature]
+  ✗ fireworks       | CLIP NN: balloon         [Vehicles]  |  EEG NN: boat            [Vehicles]
+  ✓ banana          | CLIP NN: computer        [People]  |  EEG NN: computer        [People]
+  ✗ cheesecake      | CLIP NN: pizza           [Food]  |  EEG NN: construction    [People]
+  ✗ drink           | CLIP NN: cheesecake      [Food]  |  EEG NN: skiing          [Sports]
+  ✗ pizza           | CLIP NN: cheesecake      [Food]  |  EEG NN: watermelon      [Food]
+  ✗ watermelon      | CLIP NN: cheesecake      [Food]  |  EEG NN: car             [Vehicles]
+  ✗ drums           | CLIP NN: guitar          [Music]  |  EEG NN: horses          [Animals]
+  ✗ guitar          | CLIP NN: piano           [Music]  |  EEG NN: drums           [Music]
+  ✗ piano           | CLIP NN: guitar          [Music]  |  EEG NN: road            [Urban]
+  ✗ motorcycle      | CLIP NN: car             [Vehicles]  |  EEG NN: watermelon      [Food]
+  ✗ car             | CLIP NN: road            [Urban]  |  EEG NN: mountain        [Nature]
+  ✗ balloon         | CLIP NN: fireworks       [Other]  |  EEG NN: airplane        [Vehicles]
+  ✓ airplane        | CLIP NN: boat            [Vehicles]  |  EEG NN: boat            [Vehicles]
+  ✗ boat            | CLIP NN: beach           [Urban]  |  EEG NN: mountain        [Nature]
+
+EEG nearest neighbor is CLIP rank 16.68 on average (1 = perfect match, 39 = worst)
+
+Activity NN agreement: 0.0%
+Passive  NN agreement: 12.9%
+t=-1.13  p=0.2675  n.s.
+
+Saved → neuroclip/figures/F41_nearest_neighbor_analysis.png

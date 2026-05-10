@@ -1,1 +1,19 @@
+# Raw EEG data — too large (17GB) and not ours to redistribute
 data/
+
+# Model checkpoints — 765 files, ~2.9GB total
+neuroclip/results/*.pt
+
+# Split files in repo root
+x??
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.env

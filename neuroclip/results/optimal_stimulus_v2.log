@@ -1,0 +1,66 @@
+Device: mps
+Vocabulary size: 254 concepts
+Loading cached vocab embeddings...
+SEED-DV concepts found in vocab: 39/40  missing: ['person']
+
+SEED-DV mean isolation: 0.2046
+Computing random-40 baseline...
+Random-40 mean isolation: 0.2284 ± 0.0085
+
+Greedy selection for maximum isolation...
+  Selected 10/40: mean_iso=0.3736  last=swing
+  Selected 20/40: mean_iso=0.3447  last=vest
+  Selected 30/40: mean_iso=0.3282  last=fridge
+  Selected 40/40: mean_iso=0.3174  last=silo
+Optimal-40 mean isolation: 0.3174
+
+=== Predicted R@1 (linear extrapolation from isolation) ===
+  Random-40:  isolation=0.2284  pred_R@1≈4.20%
+  SEED-DV 40: isolation=0.2046  pred_R@1≈4.15%
+  Optimal-40: isolation=0.3174  pred_R@1≈4.41%
+  Predicted improvement: +0.27pp over SEED-DV
+
+Optimal-40 concepts:
+   1. jellyfish
+   2. sundial
+   3. hippo
+   4. sofa
+   5. pear
+   6. igloo
+   7. chimp
+   8. zebra
+   9. iceberg
+  10. swing
+  11. dart
+  12. flask
+  13. crane
+  14. strawberry
+  15. fence
+  16. kite
+  17. refrigerator
+  18. microscope
+  19. feather
+  20. vest
+  21. meteor
+  22. prism
+  23. bench
+  24. octopus
+  25. ram
+  26. rake
+  27. tomato
+  28. screw
+  29. panda
+  30. fridge
+  31. sling
+  32. lobster
+  33. oar
+  34. sunflower
+  35. scissors
+  36. lighthouse
+  37. tray
+  38. kangaroo
+  39. pencil
+  40. silo
+
+Saved → neuroclip/figures/F30_optimal_stimulus_design.png
+Saved → neuroclip/results/results_optimal_stimulus.json

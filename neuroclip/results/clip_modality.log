@@ -1,0 +1,29 @@
+Device: mps
+
+Evaluating with Image gallery...
+  Overall R@1: 4.21% ± 2.35%
+  Activity: 4.76%  Passive: 4.06%
+
+Evaluating with Text gallery...
+  Overall R@1: 4.40% ± 2.24%
+  Activity: 5.61%  Passive: 4.06%
+
+Evaluating with Both gallery...
+  Overall R@1: 4.57% ± 2.46%
+  Activity: 5.40%  Passive: 4.33%
+
+Image vs Text: t=-0.49  p=0.6302  n.s.
+Both vs Image: t=1.85  p=0.0784  n.s.
+Both vs Text:  t=0.53  p=0.6025  n.s.
+
+Image-over-Text advantage:
+  Activity concepts: -0.85 pp
+  Passive  concepts: +0.00 pp
+  Activity vs Passive advantage: t=-0.57  p=0.5751  n.s.
+
+Image-Text gallery cosine similarity per concept:
+  Overall: 0.3271 ± 0.0138
+  Activity: 0.3288  Passive: 0.3266
+  t=0.41  p=0.6867  n.s.
+
+Saved → neuroclip/figures/F36_clip_modality_comparison.png

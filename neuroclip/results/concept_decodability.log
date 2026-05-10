@@ -1,0 +1,43 @@
+Device: mps
+Computing per-concept R@1 for each subject...
+  sub1: mean=2.14%  best=horse (9%)  worst=bear (0%)
+  sub10: mean=1.64%  best=bird (6%)  worst=airplane (0%)
+  sub11: mean=2.14%  best=horse (11%)  worst=bear (0%)
+  sub12: mean=2.86%  best=cup (9%)  worst=bear (0%)
+  sub13: mean=2.07%  best=scissors (9%)  worst=bear (0%)
+  sub14: mean=2.21%  best=airplane (9%)  worst=bear (0%)
+  sub15: mean=2.93%  best=dinosaur (11%)  worst=boat (0%)
+  sub16: mean=2.57%  best=airplane (9%)  worst=chair (0%)
+  sub17: mean=2.57%  best=elephant (14%)  worst=airplane (0%)
+  sub18: mean=2.93%  best=bird (9%)  worst=airplane (0%)
+  sub19: mean=3.00%  best=tiger (9%)  worst=airplane (0%)
+  sub1_session2: mean=3.29%  best=bear (9%)  worst=dog (0%)
+  sub2: mean=2.86%  best=train (11%)  worst=airplane (0%)
+  sub20: mean=1.93%  best=cat (9%)  worst=airplane (0%)
+  sub3: mean=2.64%  best=train (11%)  worst=bear (0%)
+  sub4: mean=3.21%  best=umbrella (17%)  worst=airplane (0%)
+  sub5: mean=2.71%  best=guitar (9%)  worst=bird (0%)
+  sub6: mean=2.43%  best=kangaroo (14%)  worst=bear (0%)
+  sub7: mean=2.57%  best=chair (9%)  worst=airplane (0%)
+  sub8: mean=2.29%  best=truck (11%)  worst=airplane (0%)
+  sub9: mean=2.71%  best=pizza (11%)  worst=cow (0%)
+
+Correlations with per-concept R@1:
+  CLIP isolation (1-mean_sim):  r=0.484  p=0.0016
+  CLIP consistency (sess-sim):  r=0.146  p=0.3695
+  Neighbor similarity:          r=-0.484  p=0.0016
+Saved → neuroclip/figures/F20_concept_decodability.png
+
+=== Top 5 most decodable concepts ===
+  dinosaur       : R@1=4.2%  isolation=0.3671  consistency=0.6894
+  umbrella       : R@1=3.9%  isolation=0.3827  consistency=0.6094
+  bird           : R@1=3.8%  isolation=0.3763  consistency=0.6589
+  horse          : R@1=3.8%  isolation=0.3518  consistency=0.6074
+  whale          : R@1=3.5%  isolation=0.3758  consistency=0.6617
+
+=== Bottom 5 least decodable concepts ===
+  waterfall      : R@1=1.8%  isolation=0.3753  consistency=0.6263
+  rocket         : R@1=1.6%  isolation=0.3407  consistency=0.6521
+  watch          : R@1=1.6%  isolation=0.3296  consistency=0.6241
+  refrigerator   : R@1=1.5%  isolation=0.3136  consistency=0.6292
+  cow            : R@1=1.4%  isolation=0.3127  consistency=0.6247

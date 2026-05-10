@@ -1,0 +1,40 @@
+Device: mps
+  sub1: done
+  sub10: done
+  sub11: done
+  sub12: done
+  sub13: done
+  sub14: done
+  sub15: done
+  sub16: done
+  sub17: done
+  sub18: done
+  sub19: done
+  sub1_session2: done
+  sub2: done
+  sub20: done
+  sub3: done
+  sub4: done
+  sub5: done
+  sub6: done
+  sub7: done
+  sub8: done
+  sub9: done
+
+CLIP similarity vs EEG confusion rate:
+  Spearman ρ=-0.0237  p=0.5088
+  Pearson  r=0.0291  p=0.4167
+
+Top confused concept pairs:
+  city         ↔ mountain      conf=0.0925  CLIP_sim=0.7843
+  turtle       ↔ panda         conf=0.0844  CLIP_sim=0.6797
+  guitar       ↔ piano         conf=0.0816  CLIP_sim=0.8084
+  dancing      ↔ guitar        conf=0.0803  CLIP_sim=0.7576
+  city         ↔ crowd         conf=0.0803  CLIP_sim=0.7598
+  crowd        ↔ construction  conf=0.0803  CLIP_sim=0.7398
+  balloon      ↔ airplane      conf=0.0789  CLIP_sim=0.7130
+  mountain     ↔ forest        conf=0.0789  CLIP_sim=0.8214
+  jellyfish    ↔ whale         conf=0.0789  CLIP_sim=0.7584
+  rabbit       ↔ airplane      conf=0.0776  CLIP_sim=0.5862
+  boxing       ↔ motorcycle    conf=0.0776  CLIP_sim=0.6861
+Saved → neuroclip/figures/F28_clip_confusion_correlation.png

@@ -1,0 +1,37 @@
+Device: mps
+Per-concept stability (lower CV = more universal):
+  pizza          : CV=0.691  R@1=5.3%  [Food] static
+  skiing         : CV=0.695  R@1=5.2%  [Sports] ACTION
+  guitar         : CV=0.700  R@1=8.0%  [Music] ACTION
+  construction   : CV=0.702  R@1=7.8%  [People] ACTION
+  crowd          : CV=0.715  R@1=5.9%  [Urban] static
+  airplane       : CV=0.750  R@1=4.6%  [Vehicles] static
+  motorcycle     : CV=0.876  R@1=3.8%  [Vehicles] static
+  flowers        : CV=0.886  R@1=2.7%  [Nature] static
+  fish           : CV=0.903  R@1=3.7%  [Animals] static
+  whale          : CV=0.906  R@1=4.1%  [Animals] static
+
+Activity CV: 1.4005 ± 0.6797
+Passive  CV: 1.0935 ± 0.2755
+Activity < Passive (more stable): t=1.96  p=0.0575  n.s.
+
+CV → R@1 correlation: Spearman ρ=-0.1089  p=0.5037  n.s.
+
+Loading concept embeddings for PCA...
+  Shape: (21, 40, 512)
+
+Per-category EEG embedding compactness (higher = tighter cluster):
+  Nature      : 0.0294  static
+  Urban       : 0.0294  static
+  Sports      : 0.0261  ACTION
+  Vehicles    : 0.0229  static
+  Food        : 0.0220  static
+  Animals     : 0.0216  static
+  Music       : 0.0156  ACTION
+  People      : 0.0129  ACTION
+
+Activity EEG compactness: 0.0182
+Passive  EEG compactness: 0.0251
+Activity > Passive: t=-1.82  p=0.1187  n.s.
+
+Saved → neuroclip/figures/F37_concept_stability_analysis.png

@@ -1,0 +1,222 @@
+Device: mps  |  feature: de  |  chunks: 1
+Chance: concept R@1=0.0250 R@5=0.1250  |  clip R@1=0.0050 R@5=0.0250 R@10=0.0500
+
+=== Subject: sub1.npy ===
+  fold 0:  concept R@1=0.080 R@5=0.255  |  clip R@1=0.085 R@10=0.230
+  fold 1:  concept R@1=0.160 R@5=0.295  |  clip R@1=0.170 R@10=0.305
+  fold 2:  concept R@1=0.095 R@5=0.270  |  clip R@1=0.070 R@10=0.235
+  fold 3:  concept R@1=0.110 R@5=0.300  |  clip R@1=0.110 R@10=0.275
+  fold 4:  concept R@1=0.055 R@5=0.255  |  clip R@1=0.070 R@10=0.220
+  fold 5:  concept R@1=0.095 R@5=0.325  |  clip R@1=0.105 R@10=0.270
+  fold 6:  concept R@1=0.100 R@5=0.255  |  clip R@1=0.100 R@10=0.240
+  sub1.npy mean:  concept R@1=0.099  R@5=0.279  |  clip R@1=0.101  R@10=0.254
+
+=== Subject: sub10.npy ===
+  fold 0:  concept R@1=0.025 R@5=0.120  |  clip R@1=0.020 R@10=0.140
+  fold 1:  concept R@1=0.025 R@5=0.165  |  clip R@1=0.025 R@10=0.145
+  fold 2:  concept R@1=0.040 R@5=0.150  |  clip R@1=0.050 R@10=0.170
+  fold 3:  concept R@1=0.040 R@5=0.160  |  clip R@1=0.025 R@10=0.180
+  fold 4:  concept R@1=0.020 R@5=0.115  |  clip R@1=0.020 R@10=0.120
+  fold 5:  concept R@1=0.035 R@5=0.170  |  clip R@1=0.035 R@10=0.130
+  fold 6:  concept R@1=0.025 R@5=0.110  |  clip R@1=0.020 R@10=0.115
+  sub10.npy mean:  concept R@1=0.030  R@5=0.141  |  clip R@1=0.028  R@10=0.143
+
+=== Subject: sub11.npy ===
+  fold 0:  concept R@1=0.030 R@5=0.125  |  clip R@1=0.035 R@10=0.130
+  fold 1:  concept R@1=0.040 R@5=0.160  |  clip R@1=0.060 R@10=0.115
+  fold 2:  concept R@1=0.045 R@5=0.175  |  clip R@1=0.035 R@10=0.190
+  fold 3:  concept R@1=0.045 R@5=0.185  |  clip R@1=0.050 R@10=0.165
+  fold 4:  concept R@1=0.030 R@5=0.170  |  clip R@1=0.030 R@10=0.180
+  fold 5:  concept R@1=0.045 R@5=0.175  |  clip R@1=0.035 R@10=0.185
+  fold 6:  concept R@1=0.040 R@5=0.215  |  clip R@1=0.035 R@10=0.220
+  sub11.npy mean:  concept R@1=0.039  R@5=0.172  |  clip R@1=0.040  R@10=0.169
+
+=== Subject: sub12.npy ===
+  fold 0:  concept R@1=0.045 R@5=0.180  |  clip R@1=0.045 R@10=0.160
+  fold 1:  concept R@1=0.040 R@5=0.175  |  clip R@1=0.045 R@10=0.150
+  fold 2:  concept R@1=0.015 R@5=0.115  |  clip R@1=0.010 R@10=0.130
+  fold 3:  concept R@1=0.045 R@5=0.150  |  clip R@1=0.035 R@10=0.145
+  fold 4:  concept R@1=0.010 R@5=0.125  |  clip R@1=0.015 R@10=0.110
+  fold 5:  concept R@1=0.040 R@5=0.185  |  clip R@1=0.065 R@10=0.185
+  fold 6:  concept R@1=0.015 R@5=0.115  |  clip R@1=0.010 R@10=0.120
+  sub12.npy mean:  concept R@1=0.030  R@5=0.149  |  clip R@1=0.032  R@10=0.143
+
+=== Subject: sub13.npy ===
+  fold 0:  concept R@1=0.085 R@5=0.265  |  clip R@1=0.080 R@10=0.275
+  fold 1:  concept R@1=0.040 R@5=0.110  |  clip R@1=0.045 R@10=0.145
+  fold 2:  concept R@1=0.045 R@5=0.205  |  clip R@1=0.055 R@10=0.215
+  fold 3:  concept R@1=0.025 R@5=0.135  |  clip R@1=0.035 R@10=0.120
+  fold 4:  concept R@1=0.045 R@5=0.205  |  clip R@1=0.055 R@10=0.195
+  fold 5:  concept R@1=0.035 R@5=0.175  |  clip R@1=0.030 R@10=0.170
+  fold 6:  concept R@1=0.050 R@5=0.210  |  clip R@1=0.040 R@10=0.230
+  sub13.npy mean:  concept R@1=0.046  R@5=0.186  |  clip R@1=0.049  R@10=0.193
+
+=== Subject: sub14.npy ===
+  fold 0:  concept R@1=0.020 R@5=0.130  |  clip R@1=0.030 R@10=0.155
+  fold 1:  concept R@1=0.030 R@5=0.160  |  clip R@1=0.035 R@10=0.120
+  fold 2:  concept R@1=0.075 R@5=0.230  |  clip R@1=0.060 R@10=0.210
+  fold 3:  concept R@1=0.035 R@5=0.160  |  clip R@1=0.040 R@10=0.160
+  fold 4:  concept R@1=0.035 R@5=0.120  |  clip R@1=0.040 R@10=0.125
+  fold 5:  concept R@1=0.005 R@5=0.135  |  clip R@1=0.010 R@10=0.125
+  fold 6:  concept R@1=0.020 R@5=0.175  |  clip R@1=0.040 R@10=0.165
+  sub14.npy mean:  concept R@1=0.031  R@5=0.159  |  clip R@1=0.036  R@10=0.151
+
+=== Subject: sub15.npy ===
+  fold 0:  concept R@1=0.030 R@5=0.165  |  clip R@1=0.020 R@10=0.150
+  fold 1:  concept R@1=0.065 R@5=0.200  |  clip R@1=0.060 R@10=0.195
+  fold 2:  concept R@1=0.040 R@5=0.180  |  clip R@1=0.040 R@10=0.155
+  fold 3:  concept R@1=0.035 R@5=0.180  |  clip R@1=0.030 R@10=0.155
+  fold 4:  concept R@1=0.040 R@5=0.185  |  clip R@1=0.045 R@10=0.220
+  fold 5:  concept R@1=0.025 R@5=0.200  |  clip R@1=0.015 R@10=0.195
+  fold 6:  concept R@1=0.045 R@5=0.275  |  clip R@1=0.040 R@10=0.215
+  sub15.npy mean:  concept R@1=0.040  R@5=0.198  |  clip R@1=0.036  R@10=0.184
+
+=== Subject: sub16.npy ===
+  fold 0:  concept R@1=0.015 R@5=0.125  |  clip R@1=0.010 R@10=0.150
+  fold 1:  concept R@1=0.065 R@5=0.165  |  clip R@1=0.060 R@10=0.165
+  fold 2:  concept R@1=0.035 R@5=0.155  |  clip R@1=0.020 R@10=0.190
+  fold 3:  concept R@1=0.020 R@5=0.165  |  clip R@1=0.005 R@10=0.150
+  fold 4:  concept R@1=0.030 R@5=0.150  |  clip R@1=0.020 R@10=0.135
+  fold 5:  concept R@1=0.035 R@5=0.200  |  clip R@1=0.040 R@10=0.180
+  fold 6:  concept R@1=0.030 R@5=0.150  |  clip R@1=0.045 R@10=0.125
+  sub16.npy mean:  concept R@1=0.033  R@5=0.159  |  clip R@1=0.029  R@10=0.156
+
+=== Subject: sub17.npy ===
+  fold 0:  concept R@1=0.030 R@5=0.155  |  clip R@1=0.015 R@10=0.210
+  fold 1:  concept R@1=0.040 R@5=0.165  |  clip R@1=0.035 R@10=0.150
+  fold 2:  concept R@1=0.035 R@5=0.170  |  clip R@1=0.035 R@10=0.155
+  fold 3:  concept R@1=0.035 R@5=0.155  |  clip R@1=0.040 R@10=0.145
+  fold 4:  concept R@1=0.040 R@5=0.180  |  clip R@1=0.040 R@10=0.155
+  fold 5:  concept R@1=0.045 R@5=0.185  |  clip R@1=0.045 R@10=0.145
+  fold 6:  concept R@1=0.035 R@5=0.145  |  clip R@1=0.030 R@10=0.110
+  sub17.npy mean:  concept R@1=0.037  R@5=0.165  |  clip R@1=0.034  R@10=0.153
+
+=== Subject: sub18.npy ===
+  fold 0:  concept R@1=0.035 R@5=0.220  |  clip R@1=0.045 R@10=0.195
+  fold 1:  concept R@1=0.075 R@5=0.225  |  clip R@1=0.065 R@10=0.215
+  fold 2:  concept R@1=0.030 R@5=0.195  |  clip R@1=0.040 R@10=0.160
+  fold 3:  concept R@1=0.050 R@5=0.175  |  clip R@1=0.035 R@10=0.150
+  fold 4:  concept R@1=0.015 R@5=0.115  |  clip R@1=0.025 R@10=0.110
+  fold 5:  concept R@1=0.085 R@5=0.190  |  clip R@1=0.085 R@10=0.195
+  fold 6:  concept R@1=0.040 R@5=0.175  |  clip R@1=0.055 R@10=0.185
+  sub18.npy mean:  concept R@1=0.047  R@5=0.185  |  clip R@1=0.050  R@10=0.173
+
+=== Subject: sub19.npy ===
+  fold 0:  concept R@1=0.040 R@5=0.130  |  clip R@1=0.025 R@10=0.110
+  fold 1:  concept R@1=0.055 R@5=0.205  |  clip R@1=0.060 R@10=0.200
+  fold 2:  concept R@1=0.005 R@5=0.145  |  clip R@1=0.005 R@10=0.130
+  fold 3:  concept R@1=0.035 R@5=0.165  |  clip R@1=0.045 R@10=0.160
+  fold 4:  concept R@1=0.020 R@5=0.145  |  clip R@1=0.020 R@10=0.120
+  fold 5:  concept R@1=0.070 R@5=0.215  |  clip R@1=0.060 R@10=0.220
+  fold 6:  concept R@1=0.065 R@5=0.165  |  clip R@1=0.045 R@10=0.180
+  sub19.npy mean:  concept R@1=0.041  R@5=0.167  |  clip R@1=0.037  R@10=0.160
+
+=== Subject: sub1_session2.npy ===
+  fold 0:  concept R@1=0.090 R@5=0.315  |  clip R@1=0.100 R@10=0.280
+  fold 1:  concept R@1=0.175 R@5=0.355  |  clip R@1=0.170 R@10=0.340
+  fold 2:  concept R@1=0.135 R@5=0.335  |  clip R@1=0.145 R@10=0.315
+  fold 3:  concept R@1=0.130 R@5=0.345  |  clip R@1=0.135 R@10=0.300
+  fold 4:  concept R@1=0.115 R@5=0.335  |  clip R@1=0.115 R@10=0.320
+  fold 5:  concept R@1=0.150 R@5=0.290  |  clip R@1=0.145 R@10=0.275
+  fold 6:  concept R@1=0.110 R@5=0.285  |  clip R@1=0.125 R@10=0.285
+  sub1_session2.npy mean:  concept R@1=0.129  R@5=0.323  |  clip R@1=0.134  R@10=0.302
+
+=== Subject: sub2.npy ===
+  fold 0:  concept R@1=0.025 R@5=0.155  |  clip R@1=0.030 R@10=0.160
+  fold 1:  concept R@1=0.030 R@5=0.145  |  clip R@1=0.040 R@10=0.135
+  fold 2:  concept R@1=0.035 R@5=0.185  |  clip R@1=0.025 R@10=0.140
+  fold 3:  concept R@1=0.055 R@5=0.185  |  clip R@1=0.050 R@10=0.140
+  fold 4:  concept R@1=0.040 R@5=0.175  |  clip R@1=0.035 R@10=0.165
+  fold 5:  concept R@1=0.035 R@5=0.135  |  clip R@1=0.020 R@10=0.145
+  fold 6:  concept R@1=0.035 R@5=0.140  |  clip R@1=0.045 R@10=0.100
+  sub2.npy mean:  concept R@1=0.036  R@5=0.160  |  clip R@1=0.035  R@10=0.141
+
+=== Subject: sub20.npy ===
+  fold 0:  concept R@1=0.030 R@5=0.120  |  clip R@1=0.035 R@10=0.165
+  fold 1:  concept R@1=0.015 R@5=0.130  |  clip R@1=0.020 R@10=0.090
+  fold 2:  concept R@1=0.015 R@5=0.125  |  clip R@1=0.015 R@10=0.100
+  fold 3:  concept R@1=0.005 R@5=0.130  |  clip R@1=0.010 R@10=0.155
+  fold 4:  concept R@1=0.010 R@5=0.110  |  clip R@1=0.015 R@10=0.085
+  fold 5:  concept R@1=0.035 R@5=0.160  |  clip R@1=0.025 R@10=0.150
+  fold 6:  concept R@1=0.035 R@5=0.155  |  clip R@1=0.025 R@10=0.140
+  sub20.npy mean:  concept R@1=0.021  R@5=0.133  |  clip R@1=0.021  R@10=0.126
+
+=== Subject: sub3.npy ===
+  fold 0:  concept R@1=0.045 R@5=0.150  |  clip R@1=0.030 R@10=0.170
+  fold 1:  concept R@1=0.060 R@5=0.195  |  clip R@1=0.045 R@10=0.150
+  fold 2:  concept R@1=0.015 R@5=0.130  |  clip R@1=0.020 R@10=0.125
+  fold 3:  concept R@1=0.025 R@5=0.175  |  clip R@1=0.040 R@10=0.145
+  fold 4:  concept R@1=0.045 R@5=0.135  |  clip R@1=0.045 R@10=0.130
+  fold 5:  concept R@1=0.035 R@5=0.130  |  clip R@1=0.045 R@10=0.115
+  fold 6:  concept R@1=0.055 R@5=0.190  |  clip R@1=0.050 R@10=0.160
+  sub3.npy mean:  concept R@1=0.040  R@5=0.158  |  clip R@1=0.039  R@10=0.142
+
+=== Subject: sub4.npy ===
+  fold 0:  concept R@1=0.040 R@5=0.175  |  clip R@1=0.050 R@10=0.195
+  fold 1:  concept R@1=0.015 R@5=0.115  |  clip R@1=0.025 R@10=0.130
+  fold 2:  concept R@1=0.010 R@5=0.135  |  clip R@1=0.010 R@10=0.120
+  fold 3:  concept R@1=0.015 R@5=0.170  |  clip R@1=0.030 R@10=0.175
+  fold 4:  concept R@1=0.020 R@5=0.155  |  clip R@1=0.030 R@10=0.150
+  fold 5:  concept R@1=0.040 R@5=0.170  |  clip R@1=0.030 R@10=0.150
+  fold 6:  concept R@1=0.015 R@5=0.110  |  clip R@1=0.020 R@10=0.100
+  sub4.npy mean:  concept R@1=0.022  R@5=0.147  |  clip R@1=0.028  R@10=0.146
+
+=== Subject: sub5.npy ===
+  fold 0:  concept R@1=0.035 R@5=0.170  |  clip R@1=0.045 R@10=0.155
+  fold 1:  concept R@1=0.030 R@5=0.195  |  clip R@1=0.050 R@10=0.195
+  fold 2:  concept R@1=0.060 R@5=0.180  |  clip R@1=0.050 R@10=0.160
+  fold 3:  concept R@1=0.030 R@5=0.185  |  clip R@1=0.040 R@10=0.165
+  fold 4:  concept R@1=0.040 R@5=0.215  |  clip R@1=0.040 R@10=0.180
+  fold 5:  concept R@1=0.045 R@5=0.180  |  clip R@1=0.050 R@10=0.175
+  fold 6:  concept R@1=0.015 R@5=0.165  |  clip R@1=0.020 R@10=0.190
+  sub5.npy mean:  concept R@1=0.036  R@5=0.184  |  clip R@1=0.042  R@10=0.174
+
+=== Subject: sub6.npy ===
+  fold 0:  concept R@1=0.035 R@5=0.115  |  clip R@1=0.025 R@10=0.100
+  fold 1:  concept R@1=0.040 R@5=0.150  |  clip R@1=0.025 R@10=0.140
+  fold 2:  concept R@1=0.035 R@5=0.150  |  clip R@1=0.035 R@10=0.125
+  fold 3:  concept R@1=0.055 R@5=0.155  |  clip R@1=0.045 R@10=0.170
+  fold 4:  concept R@1=0.040 R@5=0.170  |  clip R@1=0.020 R@10=0.165
+  fold 5:  concept R@1=0.045 R@5=0.185  |  clip R@1=0.045 R@10=0.165
+  fold 6:  concept R@1=0.020 R@5=0.170  |  clip R@1=0.045 R@10=0.145
+  sub6.npy mean:  concept R@1=0.039  R@5=0.156  |  clip R@1=0.034  R@10=0.144
+
+=== Subject: sub7.npy ===
+  fold 0:  concept R@1=0.020 R@5=0.135  |  clip R@1=0.020 R@10=0.115
+  fold 1:  concept R@1=0.030 R@5=0.150  |  clip R@1=0.025 R@10=0.180
+  fold 2:  concept R@1=0.035 R@5=0.090  |  clip R@1=0.030 R@10=0.105
+  fold 3:  concept R@1=0.035 R@5=0.170  |  clip R@1=0.030 R@10=0.135
+  fold 4:  concept R@1=0.035 R@5=0.140  |  clip R@1=0.045 R@10=0.120
+  fold 5:  concept R@1=0.045 R@5=0.195  |  clip R@1=0.050 R@10=0.200
+  fold 6:  concept R@1=0.045 R@5=0.180  |  clip R@1=0.035 R@10=0.170
+  sub7.npy mean:  concept R@1=0.035  R@5=0.151  |  clip R@1=0.034  R@10=0.146
+
+=== Subject: sub8.npy ===
+  fold 0:  concept R@1=0.025 R@5=0.150  |  clip R@1=0.020 R@10=0.145
+  fold 1:  concept R@1=0.030 R@5=0.155  |  clip R@1=0.025 R@10=0.110
+  fold 2:  concept R@1=0.035 R@5=0.145  |  clip R@1=0.030 R@10=0.130
+  fold 3:  concept R@1=0.050 R@5=0.180  |  clip R@1=0.040 R@10=0.170
+  fold 4:  concept R@1=0.025 R@5=0.180  |  clip R@1=0.025 R@10=0.135
+  fold 5:  concept R@1=0.030 R@5=0.140  |  clip R@1=0.025 R@10=0.170
+  fold 6:  concept R@1=0.030 R@5=0.145  |  clip R@1=0.040 R@10=0.120
+  sub8.npy mean:  concept R@1=0.032  R@5=0.156  |  clip R@1=0.029  R@10=0.140
+
+=== Subject: sub9.npy ===
+  fold 0:  concept R@1=0.055 R@5=0.180  |  clip R@1=0.060 R@10=0.180
+  fold 1:  concept R@1=0.035 R@5=0.145  |  clip R@1=0.030 R@10=0.140
+  fold 2:  concept R@1=0.030 R@5=0.145  |  clip R@1=0.025 R@10=0.140
+  fold 3:  concept R@1=0.010 R@5=0.150  |  clip R@1=0.030 R@10=0.135
+  fold 4:  concept R@1=0.035 R@5=0.160  |  clip R@1=0.030 R@10=0.125
+  fold 5:  concept R@1=0.015 R@5=0.135  |  clip R@1=0.015 R@10=0.135
+  fold 6:  concept R@1=0.025 R@5=0.120  |  clip R@1=0.010 R@10=0.105
+  sub9.npy mean:  concept R@1=0.029  R@5=0.148  |  clip R@1=0.029  R@10=0.137
+
+=== Overall (mean ± std across subjects) ===
+Concept R@1  = 0.0426 ± 0.0246  (chance 0.0250)
+Concept R@5  = 0.1751 ± 0.0443  (chance 0.1250)
+Concept R@10 = 0.3191 ± 0.0498  (chance 0.2500)
+Clip    R@1  = 0.0427 ± 0.0257  (chance 0.0050)
+Clip    R@5  = 0.1019 ± 0.0354  (chance 0.0250)
+Clip    R@10 = 0.1656 ± 0.0405  (chance 0.0500)
+
+Results saved → neuroclip/results/results_de_k1_image.json

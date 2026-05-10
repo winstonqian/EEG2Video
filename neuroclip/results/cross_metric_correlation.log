@@ -1,0 +1,37 @@
+Loaded 9 metrics: ['R@1', 'R@5', 'MRR', 'CLIP_isolation', 'CLIP_consistency', 'EEG_consistency', 'CV', 'Entropy', 'IsActivity']
+
+Spearman correlation matrix:
+                               R@1             R@5             MRR  CLIP_isolationCLIP_consistency EEG_consistency              CV         Entropy      IsActivity
+R@1                           1.00         0.546***         0.803***         0.159n.s.        -0.030n.s.         0.080n.s.        -0.138n.s.         0.013n.s.         0.212n.s.
+R@5                        0.546***            1.00         0.872***         0.035n.s.        -0.022n.s.         0.251n.s.        -0.315 *        -0.080n.s.         0.258n.s.
+MRR                        0.803***         0.872***            1.00        -0.063n.s.        -0.048n.s.         0.257n.s.        -0.162n.s.        -0.054n.s.         0.241n.s.
+CLIP_isolation             0.159n.s.         0.035n.s.        -0.063n.s.            1.00         0.072n.s.        -0.218n.s.        -0.218n.s.        -0.250n.s.         0.054n.s.
+CLIP_consistency          -0.030n.s.        -0.022n.s.        -0.048n.s.         0.072n.s.            1.00         0.270n.s.         0.069n.s.         0.086n.s.        -0.340 *
+EEG_consistency            0.080n.s.         0.251n.s.         0.257n.s.        -0.218n.s.         0.270n.s.            1.00         0.041n.s.        -0.089n.s.         0.226n.s.
+CV                        -0.138n.s.        -0.315 *        -0.162n.s.        -0.218n.s.         0.069n.s.         0.041n.s.            1.00        -0.118n.s.         0.029n.s.
+Entropy                    0.013n.s.        -0.080n.s.        -0.054n.s.        -0.250n.s.         0.086n.s.        -0.089n.s.        -0.118n.s.            1.00        -0.060n.s.
+IsActivity                 0.212n.s.         0.258n.s.         0.241n.s.         0.054n.s.        -0.340 *         0.226n.s.         0.029n.s.        -0.060n.s.            1.00
+
+Key correlations with R@1:
+  R@1 ↔ R@5                      : ρ=0.5456  p=0.0003  ***
+  R@1 ↔ MRR                      : ρ=0.8029  p=0.0000  ***
+  R@1 ↔ CLIP_isolation           : ρ=0.1594  p=0.3257  n.s.
+  R@1 ↔ CLIP_consistency         : ρ=-0.0295  p=0.8564  n.s.
+  R@1 ↔ EEG_consistency          : ρ=0.0805  p=0.6215  n.s.
+  R@1 ↔ CV                       : ρ=-0.1380  p=0.3959  n.s.
+  R@1 ↔ Entropy                  : ρ=0.0132  p=0.9358  n.s.
+  R@1 ↔ IsActivity               : ρ=0.2120  p=0.1891  n.s.
+
+Top-10 concepts by combined metric score (above median in 7 metrics):
+  skiing         : 7/7  [Sports] ACTION
+  crowd          : 7/7  [Urban] static
+  guitar         : 6/7  [Music] ACTION
+  watermelon     : 6/7  [Food] static
+  city           : 6/7  [Urban] static
+  whale          : 5/7  [Animals] static
+  forest         : 5/7  [Nature] static
+  boxing         : 5/7  [Sports] ACTION
+  motorcycle     : 5/7  [Vehicles] static
+  airplane       : 5/7  [Vehicles] static
+
+Saved → neuroclip/figures/F45_cross_metric_correlation.png

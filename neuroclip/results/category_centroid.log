@@ -1,0 +1,28 @@
+Device: mps
+Category centroid RSA: ρ=0.6445  p=0.0000  ***
+
+Silhouette scores (mean ± std):
+  CLIP: 0.0852 ± 0.1806
+  EEG:  0.0190 ± 0.2080
+  CLIP > EEG: t=2.66  p=0.0114  *
+
+Activity vs Passive silhouette:
+  CLIP: Activity=0.1706  Passive=0.0603  t=1.63  n.s.
+  EEG:  Activity=-0.0760  Passive=0.0466  t=-1.56  n.s.
+
+Per-category silhouette (CLIP vs EEG):
+  Animals     : CLIP=0.0797  EEG=0.0318  static
+  Nature      : CLIP=0.1077  EEG=0.1716  static
+  Food        : CLIP=0.1348  EEG=0.0618  static
+  Sports      : CLIP=0.1173  EEG=0.0522  ACTION
+  Music       : CLIP=0.2259  EEG=-0.0418  ACTION
+  Vehicles    : CLIP=0.0801  EEG=0.0960  static
+  Urban       : CLIP=0.0953  EEG=0.1117  static
+  People      : CLIP=0.1944  EEG=-0.3835  ACTION
+  Other       : CLIP=-1.0000  EEG=-1.0000  static
+
+Activity–Passive centroid cosine similarity:
+  CLIP: 0.8996  (lower = more separated)
+  EEG:  0.8746
+
+Saved → neuroclip/figures/F44_category_centroid_analysis.png

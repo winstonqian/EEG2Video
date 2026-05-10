@@ -1,0 +1,21 @@
+Device: mps
+Global RSA (sanity check): ρ=0.2324  p=0.0000  ***
+
+Within-category RSA:
+  Animals     : ρ=0.0536  p=0.6975  n.s.  n=11  static
+  Nature      : ρ=-0.1152  p=0.7514  n.s.  n=5  static
+  Food        : ρ=0.3697  p=0.2931  n.s.  n=5  static
+  Sports      : ρ=0.2571  p=0.6228  n.s.  n=4  ACTION
+  Music       : ρ=-0.5000  p=0.6667  n.s.  n=3  ACTION
+  Vehicles    : ρ=0.9030  p=0.0003  ***  n=5  static
+  Urban       : ρ=0.0286  p=0.9572  n.s.  n=4  static
+  People      : skipped (n=2 < 3)
+  Other       : skipped (n=1 < 3)
+
+Activity within-cat ρ: -0.1214
+Passive  within-cat ρ: 0.2480
+Activity > Passive: t=-1.01  p=0.3572  n.s.
+
+Per-subject global RSA: mean ρ=0.0271 ± 0.0664  t=1.82  n.s.
+
+Saved → neuroclip/figures/F39_within_category_rsa.png

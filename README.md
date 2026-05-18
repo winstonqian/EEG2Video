@@ -1,27 +1,116 @@
-# EEG2Video (Reproduction & Extension)
+# EEG2Video Reproduction + NeuroCLIP/LATA Extensions
 
-This repository is a reproduction and extension of the [EEG2Video](https://nips.cc/virtual/2024/poster/95156) project.
+This repository contains our MAS.S60 / 6.S985 final project code for studying
+EEG-to-video decoding on SEED-DV.
 
-## Overview
+The original EEG2Video benchmark asks whether 62-channel EEG can decode the
+visual concept, color, and motion of short natural video clips. Our project uses
+that benchmark as a starting point, but focuses on two diagnostic questions:
 
-In this project, I ran the original EEG-VP classification benchmarks and extended the baseline codebase to better handle different types of data formats:
+1. **Which visual concepts are most reliably decodable from EEG?**
+2. **When does the neural evidence for a video event arrive relative to the
+   stimulus?**
 
-- **DE & PSD Feature Training:** I initially evaluated the pre-extracted Differential Entropy (DE) and Power Spectral Density (PSD) features using the provided MLP architecture (`glfnet_mlp`). I trained and tested the models using the compressed `T=5` frequency bands.
-- **Baseline Findings:** After running the DE and PSD training loops, analysis showed a relatively low initial Top-1 classification accuracy hovering around ~4.15%. This established our baseline for the semantic classification task.
-- **Raw EEG Extension:** I generalized the PyTorch codebase to natively handle 2-second clips of Raw EEG sampled at 200Hz (`T=400`). To execute this, I updated the linear layer spatial calculations across the CNN models (like `shallownet`) to dynamically scale with the temporal sequence length (T) and channel count (C). This securely fixed the hardcoded shape crashes in the original code.
-- **Current State:** The refactored models are currently natively training on the Raw EEG arrays to classify the 40 distinct video stimuli categories directly from the oscillograms. The previous baselines for `T=5` were preserved as documented fallback code.
+The final report contribution is **NeuroCLIP + LATA: Action Semantics and
+Latency-Aware Alignment for EEG-to-Video Decoding**.
 
-## Midterm Progress & Lab Notebook
+---
 
-As part of auditing the baseline stability and establishing a clear path before scaling the project, several strict checks and architectural modifications were explored:
+## What Is In This Repo
 
-- **Sequence Shortcut Audit:** To ensure the model wasn't "cheating" by decoding subject anticipation or fatigue over the course of a 5-clip run, I stratified Top-1 accuracy strictly by clip index (1 through 5). The resulting accuracy did not scale monotonically (all remained steady at ~4.15%), proving that our baseline authentically decodes stimuli perception rather than evaluating experimental protocol artifacts.
-- **Preprocessing Data Leakage Audit:** I strictly audited train/test normalization pipelines to determine their impact on feature stability. Validating against standard data leakage led to a massive **13x variance drop in PSD features**, though DE feature variance increased. This demonstrated that pure, zero-leakage normalization impacts stability in the frequency and entropy domains entirely differently.
-- **Architectural Trade-offs (Temporal Attention):** To attempt better temporal alignment on the expanded Raw 200Hz sequences ($T=400$), I prototyped and integrated a custom `TemporalAttentionPooling` mechanism. The resulting $O(T^2)$ computational bottleneck severely slowed training without justifiable accuracy improvements. This reinforced the pragmatic engineering decision to abandon self-attention for this step and stick to efficient CNN pooling methods to keep the project compute-tractable.
+### Baseline reproduction and validity audit
+
+We reproduced EEG2Video-style 40-way within-subject concept classification and
+audited the baseline for common EEG benchmark issues:
+
+- train/test normalization leakage,
+- run-position shortcuts across the five same-concept clips in each block,
+- fold-level variance under DE and PSD features,
+- raw 200 Hz EEG compatibility.
+
+These checks live mainly in:
+
+```text
+EEG-VP/
+EEG_preprocessing/
+analysis/
+output_dir/
+```
+
+### NeuroCLIP
+
+NeuroCLIP maps EEG features into a frozen CLIP concept space and evaluates
+40-way concept retrieval. This turns CLIP from a downstream generative prior
+into an error-analysis tool for asking which SEED-DV concepts are decodable.
+
+Main finding: **CLIP geometry does not explain EEG decodability.** Concepts that
+are isolated in CLIP space are not systematically easier to decode. Activity-rich
+concepts such as sports, music, and people are substantially more decodable than
+passive scenes.
+
+Important files:
+
+```text
+neuroclip/
+├── train_neuroclip.py
+├── models_neuroclip.py
+├── dataset.py
+├── concept_decodability.py
+├── category_r1_analysis.py
+├── frequency_band_profile.py
+├── clip_confusion_correlation.py
+├── session_category_interaction.py
+├── optimal_concept_subset.py
+└── figures/
+```
+
+### LATA
+
+LATA (Latency-Aware Temporal Alignment) learns a soft distribution over
+candidate EEG-video delays during contrastive chunk alignment. It tests whether
+EEG-video alignment should assume zero lag or account for biological response
+latency.
+
+Main finding: **all 20 SEED-DV subjects prefer a nonzero delay.** Fourteen
+subjects peak at a two-chunk delay, six peak at a one-chunk delay, and no
+subject peaks at zero lag.
+
+Important files:
+
+```text
+lata/
+├── lata.py
+├── synthetic_validation.py
+├── train_lata_seeddv.py
+├── train_all_subjects.py
+├── plot_seeddv_results.py
+├── lata_synthetic_validation.png
+└── lata_all_subjects_results.png
+```
+
+---
+
+## Key Results
+
+| Result | Value |
+|---|---:|
+| Supervised DE baseline Top-1 | 4.37% ± 2.64% |
+| Supervised DE baseline Top-5 | 17.17% ± 5.44% |
+| NeuroCLIP text+image Recall@1 | **4.60% ± 2.70%** |
+| NeuroCLIP text+image Recall@5 | **17.47% ± 5.14%** |
+| Chance Recall@1 / Recall@5 | 2.50% / 12.50% |
+| Activity-rich concept Recall@1 | **6.79%** |
+| Passive concept Recall@1 | 3.83% |
+| Activity vs. passive test | t = 6.72, p = 5.95e-8 |
+| CLIP isolation vs. EEG Recall@1 | r = 0.036, p = 0.827 |
+| LATA peak delay counts | 14/20 at δ=2, 6/20 at δ=1 |
+| LATA expected delay | 1.58 ± 0.05 chunks ≈ 790 ms |
+
+---
 
 ## Installation
 
-Create your Python environment and install the required modules:
+Create a Python environment and install dependencies:
 
 ```bash
 conda create -n eegvideo python=3.12
@@ -29,15 +118,82 @@ conda activate eegvideo
 pip install -r requirements.txt
 ```
 
-Make sure to place your SEED-DV dataset directly into the `data/` directory inside the repository structure.
-
-## Usage & Training
-
-To run the classification models:
-1. **Preprocess:** Segment the raw data into proper 2-second clips by running `python EEG_preprocessing/segment_raw_signals_200Hz.py`.
-2. **Train:** Start the training block via `python EEG-VP/EEG_VP_train_test.py`.
-
-You can easily toggle between evaluating the 200Hz Raw EEG arrays or the pre-extracted DE/PSD datasets by modifying the variables at the top of the training script.
+The SEED-DV data and extracted features are not committed to this repository.
+Place the dataset/features in the expected local directories before running the
+training scripts.
 
 ---
-*Note: This stage of the repository focuses purely on the Semantic Classification branch of the pipeline (proving we can reliably map EEG states to the 40 video categories) before expanding into the generative Stable Diffusion/Tune-A-Video reconstruction process.*
+
+## Common Workflows
+
+### Run EEG2Video-style classification
+
+```bash
+python EEG-VP/EEG_VP_train_test.py
+```
+
+The training script can be configured for DE/PSD features or raw 200 Hz EEG,
+depending on the local feature files and script variables.
+
+### Generate baseline audit summaries
+
+```bash
+python analysis/analyze_all.py
+python analysis/generate_summary_tables.py
+```
+
+### Train NeuroCLIP
+
+```bash
+python neuroclip/train_neuroclip.py
+```
+
+Useful analysis scripts after training:
+
+```bash
+python neuroclip/concept_decodability.py
+python neuroclip/category_r1_analysis.py
+python neuroclip/frequency_band_profile.py
+python neuroclip/clip_confusion_correlation.py
+```
+
+### Run LATA synthetic validation and SEED-DV training
+
+```bash
+python lata/synthetic_validation.py
+python lata/train_all_subjects.py
+python lata/plot_seeddv_results.py
+```
+
+---
+
+## Repository Map
+
+```text
+.
+├── EEG-VP/                  # EEG2Video-style classification training
+├── EEG2Video/               # Original video generation / diffusion code
+├── EEG_preprocessing/       # Raw EEG segmentation and DE/PSD extraction
+├── analysis/                # Baseline audit scripts and summary tables
+├── assets/                  # Original project assets
+├── dataset/                 # Dataset metadata and channel layouts
+├── lata/                    # Latency-aware temporal alignment experiments
+├── neuroclip/               # CLIP-aligned EEG retrieval and analyses
+├── output_dir/              # Local checkpoints/results
+└── requirements.txt
+```
+
+---
+
+## Final Takeaway
+
+The project does not claim that EEG-to-video decoding is solved. Instead, it
+shows that SEED-DV contains weak but meaningful semantic signal, and that this
+signal is both **selective** and **delayed**:
+
+- selective, because activity-rich concepts decode better than passive scenes;
+- delayed, because learned EEG-video alignment consistently avoids zero lag.
+
+Future EEG-to-video benchmarks should report concept-level decodability,
+protocol audits, and latency-aware alignment diagnostics alongside aggregate
+accuracy.
